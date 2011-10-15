@@ -1,0 +1,260 @@
+<html>
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>Interactive Models</title>
+	<link href="favicon.png" rel="shortcut icon">
+	<link href="style.css" type="text/css" rel="stylesheet">
+    <!-- Tangle -->
+    <script type="text/javascript" src="libraries/Tangle.js"></script>
+
+    <!-- TangleKit -->
+    <link rel="stylesheet" href="libraries/TangleKit/TangleKit.css" type="text/css">
+    <script type="text/javascript" src="libraries/TangleKit/mootools.js"></script>
+    <script type="text/javascript" src="libraries/TangleKit/sprintf.js"></script>
+    <script type="text/javascript" src="libraries/TangleKit/BVTouchable.js"></script>
+    <script type="text/javascript" src="libraries/TangleKit/TangleKit.js"></script>
+	
+	<!-- JSX and MathJax-->
+	<link href="jsxgraph.css" type="text/css" rel="stylesheet">
+	<script src="libraries/jsxgraphcore.js" type="text/javascript"></script><!--TODO: switch to CDN version-->
+	<script type="text/javascript"
+	  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script>
+	
+	<!-- Set up default values -->
+    <script type="text/javascript">
+
+        function setUpTangle () {
+
+            var element = document.getElementById("predprey_settings");
+
+            var tangle = new Tangle(element, {
+                initialize: function () {
+                    this.k1 = 0.5;
+                    this.k2 = 0.8;
+					this.k3 = 0.008;
+					this.alpha = 1.0;
+					this.k4 = 0;
+					this.X0 =50;
+					this.Y0 =30;
+                },
+                update: function () {
+					this.Xinf = this.k2 / (this.k3 * this.alpha);
+					this.Yinf = this.k1 / this.k3;
+                }
+            });
+        }
+
+    </script>
+	
+</head>
+
+<body onload="setUpTangle();">
+	<div>
+		<section id="content">
+			<article>
+				<header>
+					
+					<h1><span id="visual">Interactive</span> <span id="math">Models</span></h1>
+					
+				</header>
+				
+				<h2>The Lotka-Volterra Model</h2>
+				
+				<p>The following system of differential equations is the <em>Lotka-Volterra model</em> describing the interactions between two groups of animals: predators and prey.</p>
+				<div class="examplespace">
+					$$\begin{eqnarray}\eqalign{\frac{\mathrm{d} X}{\mathrm{d} t} &=&&k_1X &-& k_3 X Y &\color{red}{-}& \color{red}{k_4 X^2} \\
+					\frac{\mathrm{d} Y}{\mathrm{d} t} &=&-&k_2 Y &+& \alpha k_3 X Y&&}\label{eq:LotkaVolterra}\end{eqnarray}$$
+				</div>
+				<p>\(X\) is the number of prey animals, \(Y\) the number of predators. The model has four parameters. \(k_1\) is the prey growth rate. \(k_2\) is the predator death rate. \(k_3\) is the <em>predation rate</em>, i.e. it describes the interaction between predator and prey animals. By adjusting \(\alpha\), we can describe how many predators are &ldquo;created&rdquo; from each eaten prey animal. If \(\alpha=1\), each eaten prey animal results in one new predator being added. It is more realistic, however, to set \(\alpha\) to a value smaller than one, that is to assume that it needs more than one eaten prey animal to add another predator.</p>
+				<!--p>The term marked <span style="color: red;">red</span> is an addition to the basic model that adds self-interaction between prey animals, i.e. it causes the prey population to decrease if it gets too large (for instance, due to increased competition for scarce food).</p>-->
+				<p>Play with the parameters in the following equation to see how it affects the steady state and the development of the populations in the graphs!</p>
+				<div class="examplespace workspace">
+					<div id="predprey_settings">
+						<p><strong>Dynamic equations:</strong><br />
+							Prey: \(\eqalign{\frac{\mathrm{d} X}{\mathrm{d} t} =}\) <span data-var="k1" class="TKAdjustableNumber" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"> yr<sup>-1</sup></span> \(X - \) <span data-var="k3" class="TKAdjustableNumber" data-min="0" data-max="0.1" data-step="0.001" data-format="%.3f"> yr<sup>-1</sup></span> \(XY\)<span id="k4_container">\(-\)<span data-var="k4" class="TKAdjustableNumber" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"> yr<sup>-1</sup></span> \(X^2\)</span><br />
+							Predators: \(\eqalign{\frac{\mathrm{d} Y}{\mathrm{d} t} =}-\)<span data-var="k2" class="TKAdjustableNumber" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"> yr<sup>-1</sup></span>\(Y +\)<span data-var="alpha" class="TKAdjustableNumber" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span>\(\times\)<span data-var="k3" class="TKAdjustableNumber" data-min="0" data-max="0.1" data-step="0.001" data-format="%.3f"> yr<sup>-1</sup></span>\(XY\)</p>
+							<p><strong>Initial state:</strong>
+							\( \qquad\) Prey: \(X^0=\)<span data-var="X0" class="TKAdjustableNumber" data-min="0" data-max="200"> animals</span>\(, \qquad\) Predators: \(Y^0=\)<span data-var="Y0" class="TKAdjustableNumber" data-min="0" data-max="200"> animals</span></p>
+							<p><strong>Steady state:</strong>
+							\( \qquad X_2^\infty = \frac{k_2}{\alpha \times k_3} =\)<span data-var="Xinf" data-format="%.1f"> animals</span> \(, \qquad Y_2^\infty = \frac{k_1}{k_3} =\)<span data-var="Yinf" data-format="%.1f"> animals</span><br />
+						</p>
+					</div>
+					<div style ="width: 450px; float: left; margin-right: 20px">
+						<strong>Population development:</strong><br /><br />
+						<div class="jsxbox" id="predprey_board" style="height:250px;"></div>
+					</div>
+					<div style ="width: 250px; float: left;">
+						<strong>Phase space:</strong><br /><br />
+						<div class="jsxbox" id="phase_board" style="height:250px;"></div>
+					</div>
+					<div style="clear:both;"></div>
+				</div>
+				<div class="examplespace">
+					<div class="jsxbox" id="settings_board" style="height:60px;"></div>
+				</div>
+				<script type="text/javascript">
+				JXG.Options = JXG.deepCopy(JXG.Options, {
+				    showNavigation: false,
+					showCopyright: false,
+					text: {
+						useMathJax: true,
+					},
+					axis: {
+						lastArrow: false,
+					}
+				}
+				);
+
+				// Initialise board
+				settings_board = JXG.JSXGraph.initBoard('settings_board', {boundingbox: [0, 11, 11, 0], axis: false, grid: false});    
+				predprey_board = JXG.JSXGraph.initBoard('predprey_board', {boundingbox: [-1.5, 252.5, 52.5, -1.5], axis: true, grid: false});
+				JXG.Options.axis.ticks.drawLabels = false;
+				phase_board = JXG.JSXGraph.initBoard('phase_board', {boundingbox: [-1.5, 252.5, 252.5, -1.5], axis: true, grid: false});
+					
+				// Disable scrolling by mouse wheel
+				JXG.removeEvent(settings_board.containerObj, 'mousewheel', settings_board.mouseWheelListener,
+				settings_board);
+				JXG.removeEvent(settings_board.containerObj, 'DOMMouseScroll',
+				settings_board.mouseWheelListener, settings_board);
+				JXG.removeEvent(predprey_board.containerObj, 'mousewheel', predprey_board.mouseWheelListener,
+				predprey_board);
+				JXG.removeEvent(predprey_board.containerObj, 'DOMMouseScroll',
+				predprey_board.mouseWheelListener, predprey_board);
+				JXG.removeEvent(phase_board.containerObj, 'mousewheel', phase_board.mouseWheelListener,
+				phase_board);
+				JXG.removeEvent(phase_board.containerObj, 'DOMMouseScroll',
+				phase_board.mouseWheelListener, phase_board);
+				
+				// Set colors
+				var preycolor = '#91BFDB'
+				var predcolor = '#FC8D59'
+				var phasecolor = '#31A354'
+
+			    // Define sliders to dynamically change parameters of the equations and create text elements to describe them
+			    k1Slider = settings_board.createElement('slider', [[0.1,9],[4.1,9],[0.0,0.5,1.0]],{name:'k<sub>1</sub>',glider:{fillColor: preycolor}});
+			    k2Slider = settings_board.createElement('slider', [[0.1,4],[4.1,4],[0.0,0.8,1.0]],{name:'k<sub>2</sub>',glider:{fillColor: predcolor}});
+			    k3Slider = settings_board.createElement('slider', [[6,9],[10,9],[0.0,0.008,0.05]],{name:'k<sub>3</sub>',snapWidth:-1});
+			    k4Slider = settings_board.createElement('slider', [[6,4],[10,4],[0.0,1.0,1.0]],{name:'&alpha;'});
+			  	
+				k1SliderText = settings_board.createElement('text', [0.1,7, "Prey growth rate"]);
+				k2SliderText = settings_board.createElement('text', [0.1,2, "Predator death rate"]);
+				k3SliderText = settings_board.createElement('text', [6,7, "Predation rate"]);
+				k4SliderText = settings_board.createElement('text', [6,2, "Predator growth rate per eaten prey"]);
+
+			    // Dynamic initial value as gliders on the y-axis
+			    startprey = predprey_board.createElement('glider', [0, 50, predprey_board.defaultAxes.y], {name:'X: Prey',strokeColor:preycolor,fillColor:preycolor});
+				startpred = predprey_board.createElement('glider', [0, 30, predprey_board.defaultAxes.y], {name:'Y: Predator',strokeColor:predcolor,fillColor:predcolor});
+
+
+			    // Variables for the JXG.Curves
+			    var preycurve = null;
+			    var predcurve = null;
+				var phasecurve = null;
+
+			    // Initialise ODE and solve it with JXG.Math.Numerics.rungeKutta()
+			    function ode() {
+			        // evaluation interval
+			        var I = [0, 50];
+			        // Number of steps. 1000 should be enough
+			        var N = 1000;
+			
+					var k1 = k1Slider.Value();
+		            var k2 = k2Slider.Value();
+		            var k3 = k3Slider.Value();
+		            var k4 = k4Slider.Value();
+
+			        // Right hand side of the ODE dx/dt = f(t, x)
+			        var f = function(t, x) {
+			            var y = [];
+			            y[0] = x[0]*(k1 - k3*x[1]);
+			            y[1] = x[1]*(-k2 + k4*k3*x[0]);
+
+			            return y;
+			        }
+			
+			        // Initial value
+			        var x0 = [startprey.Y(), startpred.Y()];
+
+			        // Solve ode
+			        var data = JXG.Math.Numerics.rungeKutta('heun', x0, I, N, f);
+
+			        // to plot the data against time we need the times where the equations were solved
+			        var t = [];
+			        var q = I[0];
+			        var h = (I[1]-I[0])/N;
+			        for(var i=0; i<data.length; i++) {
+			            data[i].push(q);
+			            q += h;
+			        }
+
+			        return data;
+			    }
+
+			    // get data points
+			    var data = ode();
+
+			    // copy data to arrays so we can plot it using JXG.Curve
+			    var t = [];
+			    var dataprey = [];
+			    var datapred = [];
+			    for(var i=0; i<data.length; i++) {
+			        t[i] = data[i][2];
+			        dataprey[i] = data[i][0];
+			        datapred[i] = data[i][1];
+			    }
+
+				// Plot Prey
+			    preycurve = predprey_board.createElement('curve', [t, dataprey], {strokeColor:preycolor, strokeWidth:'2'});
+			    preycurve.updateDataArray = function() {
+			        var data = ode();
+			        this.dataX = [];
+			        this.dataY = [];
+			        for(var i=0; i<data.length; i++) {
+			            this.dataX[i] = t[i];
+			            this.dataY[i] = data[i][0];
+			        }
+			    }
+
+			    // Plot Predator
+			    predcurve = predprey_board.createElement('curve', [t, datapred], {strokeColor:predcolor, strokeWidth:'2'});
+			    predcurve.updateDataArray = function() {
+			        var data = ode();
+			        this.dataX = [];
+			        this.dataY = [];
+			        for(var i=0; i<data.length; i++) {
+			            this.dataX[i] = t[i];
+			            this.dataY[i] = data[i][1];
+			        }
+			    }
+			
+				// Plot phase space
+				
+				// Steady states
+				var Xinf = k2Slider.Value()/(k4Slider.Value()*k3Slider.Value());
+				var Yinf = k1Slider.Value()/k3Slider.Value();
+				
+				phasecurve = phase_board.createElement('curve', [datapred, dataprey], {strokeColor:phasecolor, strokeWidth:'2'});
+				phasecurve.updateDataArray = function() {
+				    var data = ode();
+			        this.dataX = [];
+			        this.dataY = [];
+			        for(var i=0; i<data.length; i++) {
+			            this.dataY[i] = data[i][0];
+			            this.dataX[i] = data[i][1];
+			        }
+				}
+				var Xsteadyp1 = phase_board.createElement('point',[0,Xinf], {size:-1, name: 'X<sup>&#8734;</sup>'});
+				var Xsteadyp2 = phase_board.createElement('point',[250,Xinf], {size:-1, name: ''});
+				var Xsteadyline = phase_board.createElement('line',[Xsteadyp1,Xsteadyp2], {straightFirst:false, straightLast:false, strokeWidth:2, color: preycolor});
+				var Ysteadyp1 = phase_board.createElement('point',[Yinf,0], {size:-1, name: 'Y<sup>&#8734;</sup>'});
+				var Ysteadyp2 = phase_board.createElement('point',[Yinf,250], {size:-1, name: ''});
+				var Ysteadyline = phase_board.createElement('line',[Ysteadyp1,Ysteadyp2], {straightFirst:false, straightLast:false, strokeWidth:2, color: predcolor});
+				var FixedPoint = phase_board.createElement('point',[Yinf,Xinf], {name:'', size:2, color: phasecolor});
+
+				</script>
+			</article>
+		</section>
+	</div>
+</body></html>
