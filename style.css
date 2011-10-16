@@ -1,12 +1,13 @@
-body{font-size:15px;line-height:23px;background:url("images/white_texture.png") repeat scroll 0% 0% transparent;font-family:Georgia, Times, serif;}
-article{max-width:792px;margin:auto;}
-h1,h2,h3{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;}
+body{font-size:15px;line-height:23px;background:url("images/white_texture.png") repeat scroll 0% 0% transparent;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;}
+article{max-width:850px;margin:auto;}
 h1{font-size:64px;line-height:69px;margin-top:23px;margin-bottom:46px;}
 h2{font-size:39px;line-height:46px;margin-top:46px;margin-bottom:23px;}
 h3{font-size:24px;line-height:46px;margin-top:23px;margin-bottom:0px;}
 p,ul,.examplespace p+p{margin-top:0px;margin-bottom:23px;}
 small,aside{font-size:9px;}
-.examplespace{background:url("images/t-80.png") repeat scroll 0% 0% transparent;padding:23px;margin-bottom:23px;border:1px solid #E5E5E5;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
+.sans{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;}
+.examplespace{font-family:Georgia, Times, serif;background:url("images/t-80.png") repeat scroll 0% 0% transparent;padding:23px;margin-bottom:23px;border:1px solid #E5E5E5;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;font-size:14px;}
+.equationspace{padding-top:0;padding-bottom:0;}
 #title1{color:#3b7bf2;font-weight:normal;}
 #title2{color:#072a6b;}
 a{color:#5288ac;text-decoration:none;}
