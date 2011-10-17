@@ -1,12 +1,15 @@
+@bodytext: #000000;
 @title1: #3b7bf2;
 @title2: #072a6b;
 @links: #5288AC;
+@slider: #46f;
 
 body { 
 	font-size: 15px;
 	line-height: 23px;
 	background: url("images/white_texture.png") repeat scroll 0% 0% transparent;
 	font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+	color: @bodytext;
 }
 
 article {
@@ -84,7 +87,38 @@ ul {
 	}
 }
 
-.eqActive {
-	.TKAdjustableNumber {
-	}
+#toggle {
+	float: right;
+}
+
+.toggle-1-on:hover, .toggle-2-off:hover {
+	text-decoration: none;
+	background-color: #ddd;
+}
+
+.toggle-1-on {
+	.sans;
+	color: @bodytext;
+	padding: 0px 8px 0px 12px;
+	-moz-border-radius-topleft: 0.5em;
+	-moz-border-radius-bottomleft: 0.5em;
+	-webkit-border-top-left-radius: 0.5em;
+	-webkit-border-bottom-left-radius: 0.5em;
+	border: 1px solid #aaa;
+	background-color: #ddd;
+	display: inline;
+}
+
+.toggle-2-off {
+	.sans;
+	color: @slider;
+	padding: 0px 12px 0px 8px;
+	-moz-border-radius-topright: 0.5em;
+	-moz-border-radius-bottomright: 0.5em;
+	-webkit-border-top-right-radius: 0.5em;
+	-webkit-border-bottom-right-radius: 0.5em;
+	border: 1px solid #aaa;
+	border-left: none;
+	background-color: #fff;
+	display: inline;
 }
