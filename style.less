@@ -8,6 +8,9 @@
 @title2: #072a6b;
 @links: #5288AC;
 @slider: #46f;
+@boxbackground: #bbc7ff;
+@boxborder: #113cff;
+@boxborder_soft: #727272;
 
 // The whole rest
 body { 
@@ -127,4 +130,77 @@ ul {
 	border-left: none;
 	background-color: #fff;
 	display: inline;
+}
+
+#modelboxcontainer {
+    height: 300px;
+}
+
+.modelbox {
+    position: relative;
+    background: @boxbackground;
+    border: 1px solid @boxborder;
+    padding: 5px;
+    font-size: 0.9em;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	cursor: move;
+	box-shadow: 2px 2px 19px #AAAAAA;
+	z-index: 10;
+	.TKAdjustableNumber {
+	    cursor: col-resize;
+	}
+}
+
+#modelbox1 {
+    width: 180px;
+    height: 120px;
+    left: 40px;
+    top: 20px;
+}
+
+#modelbox2 {
+    width: 130px;
+    height: 120px;
+    left: 400px;
+    top: -112px;
+}
+
+.boxname {
+    font-weight: bold;
+}
+
+.connectorlabel {
+    padding: 5px;
+    // border: 1px solid @boxborder_soft;
+    // box-shadow: 2px 2px 10px #AAAAAA;
+    background: url("images/t-80.png") repeat scroll 0% 0% transparent;
+    z-index: 20;
+}
+
+.boxsize {
+    
+}
+
+.boxinput {
+    position: absolute;
+    top: -42px;
+    left: 10px;
+    padding: 10px 10px 10px 20px;
+    background: transparent url("images/arrow-down.png") no-repeat scroll 0 bottom;
+}
+
+.boxoutput {
+    position: absolute;
+    bottom: -38px;
+    right: 0;
+    width: 30px;
+    padding: 10px 10px 10px 20px;
+    background: transparent url("images/arrow-down.png") no-repeat scroll 0 bottom;
+}
+
+.boxreaction {
+    
 }

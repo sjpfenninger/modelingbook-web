@@ -1,0 +1,107 @@
+<html>
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>Interactive Models &raquo; Two-box model</title>
+	<link href="favicon.png" rel="shortcut icon">
+	<link href="style.css" type="text/css" rel="stylesheet">
+	<!-- Tangle -->
+    <script type="text/javascript" src="libraries/Tangle.js"></script>
+    <link rel="stylesheet" href="libraries/TangleKit/TangleKit.css" type="text/css">
+    <script type="text/javascript" src="libraries/TangleKit/mootools.js"></script>
+    <script type="text/javascript" src="libraries/TangleKit/sprintf.js"></script>
+    <script type="text/javascript" src="libraries/TangleKit/BVTouchable.js"></script>
+    <script type="text/javascript" src="libraries/TangleKit/TangleKit.js"></script>
+	<!-- jQuery -->
+    <script type="text/javascript"
+	  src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js">
+	</script>
+	<!-- jQueryUI -->
+	<script type="text/javascript"
+	  src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js">
+	</script>
+	<!-- jsPlumb -->
+	<script type="text/javascript" src="libraries/jquery.jsPlumb-1.3.3-all-min.js "></script>
+	<link rel="stylesheet" type="text/css"
+	    href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css"/>
+	<!-- JSX -->
+	<link href="librarires/jsxgraph.css" type="text/css" rel="stylesheet">
+	<script type="text/javascript"
+	  src="http://cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.92/jsxgraphcore.js">
+	</script>
+	<!-- MathJax -->
+	<script type="text/javascript"
+	  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script>
+	<!-- Model code -->
+	<script type="text/javascript" src="2box.js"></script>	
+</head>
+
+<body>
+	<script>
+	$(document).ready(function(){
+		setUpUI();
+		setUpTangle();
+	});
+   </script>
+	<div>
+		<section id="content">
+			<article>
+				<header>
+					
+					<!-- <h1><span id="title1">Interactive</span> <span id="title2">Models</span></h1> -->
+					
+				</header>
+				
+				<h2>The two-box model</h2>
+				<p>Each of the parameters marked <span class="TKAdjustableNumber">marked like this</span> below can be changed.</p>
+				<div class="examplespace workspace" id="modelboxcontainer">
+					<div class="modelbox" id="modelbox1">
+						<span class="boxname">Upstream lake<br /></span>
+						<span class="boxsize">Size: <span data-var="box1size"></span></span>
+						<span class="boxinput"><span data-var="box1in" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span></span>
+						<span class="boxoutput"><span data-var="box1out" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span></span>
+					</div>
+					<div class="modelbox" id="modelbox2">
+						<span class="boxname">Downstream lake<br /></span>
+						<span class="boxsize">Size: <span data-var="box2size"></span></span>
+						<span class="boxinput"><span data-var="box2in" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span></span>
+						<span class="boxoutput"><span data-var="box2out" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span></span>
+					</div>
+				</div>
+				<!-- <div class="examplespace workspace">
+					<div id="predprey_settings">
+						<p><span class="sans"><strong>Dynamic equations</strong></span><br />
+							Prey: \(\eqalign{\frac{\mathrm{d} X}{\mathrm{d} t} =}\) <span data-var="k1" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"> yr<sup>-1</sup></span> \(X - \) <span data-var="k3" class="TKAdjustableNumber inputField" data-min="0" data-max="0.1" data-step="0.001" data-format="%.3f"> yr<sup>-1</sup></span> \(XY\)<span id="k4_container">\(-\)<span data-var="k4" class="TKAdjustableNumber inputField" data-min="0" data-max="0.01" data-step="0.0001" data-format="%.4f"> yr<sup>-1</sup></span> \(X^2\)</span><br />
+							Predators: \(\eqalign{\frac{\mathrm{d} Y}{\mathrm{d} t} =}-\)<span data-var="k2" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"> yr<sup>-1</sup></span>\(Y +\)<span data-var="alpha" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span>\(\times\)<span data-var="k3" class="TKAdjustableNumber inputField" data-min="0" data-max="0.1" data-step="0.001" data-format="%.3f"> yr<sup>-1</sup></span>\(XY\)</p>
+							<p><span class="sans"><strong>Initial state</strong></span>
+							\( \qquad\) Prey: \(X^0=\)<span data-var="X0" class="TKAdjustableNumber inputField" data-min="0" data-max="200" data-format="%.0f"> animals</span>\(, \qquad\) Predators: \(Y^0=\)<span data-var="Y0" class="TKAdjustableNumber inputField" data-min="0" data-max="200" data-format="%.0f"> animals</span></p>
+							<p><span class="sans"><strong>Steady state</strong></span>
+							\( \qquad X_2^\infty =\)<span data-var="Xinf" data-format="%.1f"> animals</span> \(, \qquad Y_2^\infty =\)<span data-var="Yinf" data-format="%.1f"> animals</span>\(\qquad\) (<span data-var="stability"></span>)<br />
+						</p>
+					</div>
+					<div style ="width: 470px; float: left; margin-right: 20px">
+						<span class="sans"><strong>Population development</strong></span>
+						<div class="jsxbox" id="predprey_board" style="height:300px;"></div>
+					</div>
+					<div style ="width: 300px; float: left;">
+						<span class="sans"><strong>Phase space</strong></span>
+						<div class="jsxbox" id="phase_board" style="height:300px;"></div>
+					</div>
+					<div style="clear:both;"></div>
+				</div> -->
+				<!-- <h3>The formal equations</h3>
+								<p>The following system of differential equations is the <em>Lotka-Volterra model</em> describing the interactions between two groups of animals: predators and prey.</p>
+								<div class="examplespace equationspace">
+									$$\begin{eqnarray}\eqalign{\frac{\mathrm{d} X}{\mathrm{d} t} &=&&k_1X &-& k_3 X Y &\color{red}{-}& \color{red}{k_4 X^2} \\
+									\frac{\mathrm{d} Y}{\mathrm{d} t} &=&-&k_2 Y &+& \alpha k_3 X Y&&}\label{eq:LotkaVolterra}\end{eqnarray}$$
+								</div>
+								<p>\(X\) is the number of prey animals, \(Y\) the number of predators. \(k_1\) is the prey growth rate. \(k_2\) is the predator death rate. \(k_3\) is the <em>predation rate</em>, i.e. it describes the interaction between predator and prey animals.</p>
+								<p>By adjusting \(\alpha\), we can describe how many predators are &ldquo;created&rdquo; from each eaten prey animal. If \(\alpha=1\), each eaten prey animal results in one new predator being added. It is more realistic, however, to set \(\alpha\) to a value smaller than one, i.e. to assume that it needs more than one eaten prey animal to add another predator.</p>
+								<p>The term marked <span style="color: red;">red</span> is an addition to the basic model that adds self-interaction between prey animals, i.e. it causes the prey population to decrease if it gets too large (for instance, due to increased competition for scarce food).</p>
+								 -->
+				<!-- <aside>Created by <a href="http://pfenninger.org/">Stefan Pfenninger</a>. This tool uses <a href="http://jsxgraph.uni-bayreuth.de/">JSXGraph</a> for calculations and graphing, <a href="http://worrydream.com/Tangle/">Tangle</a> for interactive adjustment of the equations, and <a href="http://www.mathjax.org/">MathJax</a> for math rendering. The code for graphing the Lotka-Volterra equations is based on the <a href="http://jsxgraph.uni-bayreuth.de/wiki/index.php/Lotka-Volterra_equations">JSXGraph example</a>.</aside> -->
+			</article>
+		</section>
+	</div>
+</body></html>
