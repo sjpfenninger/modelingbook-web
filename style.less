@@ -149,6 +149,8 @@ ul {
 	cursor: move;
 	box-shadow: 2px 2px 19px #AAAAAA;
 	z-index: 10;
+	min-height: 100px;
+	min-width: 100px;
 }
 
 .TKAdjustableNumber {
@@ -163,7 +165,7 @@ ul {
 }
 
 #modelbox2 {
-    width: 130px;
+    width: 140px;
     height: 120px;
     left: 490px;
     top: -62px;
@@ -195,13 +197,22 @@ ul {
 
 .boxoutput {
     position: absolute;
-    bottom: -38px;
+    bottom: 6px;
     right: 0;
     width: 30px;
-    padding: 10px 10px 10px 20px;
-    background: transparent url("images/arrow-down.png") no-repeat scroll 0 bottom;
+    padding: 10px 5px 10px 24px;
+    background-repeat: no-repeat;
+    background-position: 4px 0, 0 bottom;
 }
 
-.boxreaction {
-    
+.boxoutput.eqPositive {
+    background-image: url("images/arrow-down.png"), url("images/bottom.png");
+}
+
+.boxoutput.eqNegative {
+    background-image: url("images/arrow-up.png"), url("images/bottom.png");
+}
+
+.boxoutput.eqInactive {
+    background-image: url("images/arrow-down-t.png"), url("images/bottom-t.png");
 }
