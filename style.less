@@ -1,0 +1,206 @@
+// Fonts
+
+/* none so far */
+
+// Colors
+@bodytext: #000000;
+@title1: #3b7bf2;
+@title2: #072a6b;
+@links: #5288AC;
+@slider: #46f;
+@boxbackground: #bbc7ff;
+@boxborder: #113cff;
+@boxborder_soft: #727272;
+
+// The whole rest
+body { 
+	font-size: 15px;
+	line-height: 23px;
+	background: url("images/white_texture.png") repeat scroll 0% 0% transparent;
+	font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+	color: @bodytext;
+}
+
+article {
+	max-width: 850px; 
+	margin: auto;
+}
+
+h1, h2, h3 {
+}
+
+h1 {
+	font-size: 64px;
+	line-height: 69px;
+	margin-top: 23px;
+	margin-bottom: 46px;
+}
+
+h2 { font-size: 39px; line-height: 46px; margin-top: 46px; margin-bottom: 23px; }
+
+h3 { font-size: 24px; line-height: 46px; margin-top: 23px; margin-bottom: 0px; }
+
+p, ul, .examplespace p + p {
+	margin-top: 0px;
+	margin-bottom: 23px;
+}
+
+small, aside { font-size: 10px; }
+
+.sans {font-family: Helvetica Neue,Helvetica,Arial,sans-serif;}
+
+.examplespace {
+	font-family: Georgia, Times, serif;
+	background: url("images/t-80.png") repeat scroll 0% 0% transparent;
+	padding: 23px;
+	margin-bottom: 23px;
+	border: 1px solid #E5E5E5;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font-size: 14px;
+}
+
+.equationspace {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+#title1 {
+	color: @title1;
+	font-weight: normal;
+}
+
+#title2 {
+	color: @title2;
+}
+
+a {
+	color: @links;
+	text-decoration: none;
+}
+	
+a:hover {
+	text-decoration: underline;
+}
+
+ul {
+	padding-left: 20px;
+}
+
+.eqInactive {
+	color: #D5D5D5;
+	.TKAdjustableNumber {
+		color: #D5D5D5;
+		border-bottom: 1px dashed #D5D5D5;
+	}
+}
+
+#toggle {
+	float: right;
+}
+
+.toggle-1-on:hover, .toggle-2-off:hover {
+	text-decoration: none;
+	background-color: #ddd;
+}
+
+.toggle-1-on {
+	.sans;
+	color: @bodytext;
+	padding: 0px 8px 0px 12px;
+	-moz-border-radius-topleft: 0.5em;
+	-moz-border-radius-bottomleft: 0.5em;
+	-webkit-border-top-left-radius: 0.5em;
+	-webkit-border-bottom-left-radius: 0.5em;
+	border: 1px solid #aaa;
+	background-color: #ddd;
+	display: inline;
+}
+
+.toggle-2-off {
+	.sans;
+	color: @slider;
+	padding: 0px 12px 0px 8px;
+	-moz-border-radius-topright: 0.5em;
+	-moz-border-radius-bottomright: 0.5em;
+	-webkit-border-top-right-radius: 0.5em;
+	-webkit-border-bottom-right-radius: 0.5em;
+	border: 1px solid #aaa;
+	border-left: none;
+	background-color: #fff;
+	display: inline;
+}
+
+#modelboxcontainer {
+    height: 300px;
+}
+
+.modelbox {
+    position: relative;
+    background: @boxbackground;
+    border: 1px solid @boxborder;
+    padding: 5px;
+    font-size: 0.9em;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	cursor: move;
+	box-shadow: 2px 2px 19px #AAAAAA;
+	z-index: 10;
+	.TKAdjustableNumber {
+	    cursor: col-resize;
+	}
+}
+
+#modelbox1 {
+    width: 180px;
+    height: 120px;
+    left: 130px;
+    top: 70px;
+}
+
+#modelbox2 {
+    width: 130px;
+    height: 120px;
+    left: 490px;
+    top: -62px;
+}
+
+.boxname {
+    font-weight: bold;
+}
+
+.connectorlabel {
+    padding: 5px;
+    // border: 1px solid @boxborder_soft;
+    // box-shadow: 2px 2px 10px #AAAAAA;
+    background: url("images/t-80.png") repeat scroll 0% 0% transparent;
+    z-index: 20;
+}
+
+.boxsize {
+    
+}
+
+.boxinput {
+    position: absolute;
+    top: -42px;
+    left: 10px;
+    padding: 10px 10px 10px 20px;
+    background: transparent url("images/arrow-down.png") no-repeat scroll 0 bottom;
+}
+
+.boxoutput {
+    position: absolute;
+    bottom: -38px;
+    right: 0;
+    width: 30px;
+    padding: 10px 10px 10px 20px;
+    background: transparent url("images/arrow-down.png") no-repeat scroll 0 bottom;
+}
+
+.boxreaction {
+    
+}
