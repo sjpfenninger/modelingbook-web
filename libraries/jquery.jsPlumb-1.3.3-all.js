@@ -4375,7 +4375,16 @@ about the parameters allowed in the params object.
     	
     	this.getTextDimensions = function(connector) {
     		labelText = typeof self.label == 'function' ? self.label(self) : self.label;
-    		div.innerHTML = labelText.replace(/\r\n/g, "<br/>");
+            // sjp replacement begin
+            if (self.labelinit) {
+                if (typeof self.label == 'function') {
+                    div.innerHTML = labelText.replace(/\r\n/g, "<br/>");
+                }
+            } else {
+    		    div.innerHTML = labelText.replace(/\r\n/g, "<br/>");
+    		}
+    		self.labelinit = true;
+    		// sjp replacement end
     		var de = jsPlumb.CurrentLibrary.getElementObject(div),
     		s = jsPlumb.CurrentLibrary.getSize(de);
     		return {width:s[0], height:s[1]};

@@ -15,22 +15,22 @@ function setUpUI() {
     	connector:"Straight",
     	paintStyle:{ strokeStyle:"#727272", lineWidth:2 }
     };
-    jsPlumb.connect({
+    connector_box1_box2 = jsPlumb.connect({
     	source:"modelbox1", 
     	target:"modelbox2",
     	anchors:[[1, 0.25, 1, 0], [0, 0.25, -1, 0]],
     	overlays:[ 
-        		["Arrow", { width:12, length:10, location:1} ],
-        		[ "Label", { label:'<span data-var="box1to2" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span>', location:0.5, cssClass:"connectorlabel connectorlabel1"} ]
+        		["Arrow", { id: 'arrow', width:12, length:10, location:1} ],
+        		[ "Label", { id: 'label', label:'<span data-var="box1to2" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span>', location:0.5, cssClass:"connectorlabel label_box1_box2"} ]
         	],
     }, common);
-    jsPlumb.connect({
+    connector_box2_box1 = jsPlumb.connect({
     	source:"modelbox2", 
     	target:"modelbox1",
     	anchors:[[0, 0.75, -1, 0], [1, 0.75, 1, 0]],
     	overlays:[ 
-        		["Arrow", { width:12, length:10, location:1} ],
-        		[ "Label", { label:'<span data-var="box2to1" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span>', location:0.5, cssClass:"connectorlabel connectorlabel2"} ]
+        		["Arrow", { id: 'arrow', width:12, length:10, location:1} ],
+        		[ "Label", { id: 'label', label:'<span data-var="box2to1" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span>', location:0.5, cssClass:"connectorlabel label_box2_box1"} ]
         	],
     }, common);
     firstboxresize = true;
@@ -73,7 +73,13 @@ function setUpTangle() {
 			if (tangleInitialized) {
 			    
 			}
+            // Set variables greyed or non-greyed
             updateUIElements();
+            
+            // Update `label` member of all label overlays
+            // connector_box1_box2.getOverlay('label').label  = $(".label_box1_box2").html();
+            // connector_box1_box2.getOverlay('label').label  = 'NOUPDATE';
+            
         },
     });
 	
