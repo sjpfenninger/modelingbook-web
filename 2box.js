@@ -48,6 +48,11 @@ function setUpUI() {
         firstboxresize = false;
     });
     // MathJax.Hub.Queue(["Typeset",MathJax.Hub]); // Make sure MathJax catches stuff in any added labels
+    MathJax.Hub.Config({
+      menuSettings: {
+        context: "browser",
+      }
+    });
 }
 
 function updateUIElements () {
