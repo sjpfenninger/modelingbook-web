@@ -22,7 +22,9 @@
 	<link href="libraries/jsxgraph.css" type="text/css" rel="stylesheet">
 	<script type="text/javascript" src="libraries/jsxgraphcore.js "></script>
 	<!-- MathJax -->
-	<script type="text/javascript" src="libraries/MathJax.js"></script>
+	<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
 	<!-- Model code -->
 	<script type="text/javascript" src="2box.js"></script>	
 </head>
@@ -43,20 +45,20 @@
 					
 				</header>
 				
-				<h2>The two-box model</h2>
+				<h2>Linear two-box model</h2>
 				<p>Each of the parameters <span class="TKAdjustableNumber">marked like this</span> below can be changed.</p>
 				<div class="examplespace workspace" id="modelboxcontainer">
 					<div class="modelbox" id="modelbox1">
-						<span class="boxname">Upstream lake<br /></span>
-						<span class="boxsize">Size: <span data-var="box1size"></span></span>
-						<span class="boxinput"><span data-var="box1in" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span></span>
-						<span class="boxoutput"><span data-var="box1out" class="TKAdjustableNumber inputField" data-min="-1" data-max="1" data-step="0.01" data-format="%.2f"></span></span>
+						<span class="boxname"><em>M</em><sub>1</sub><br /></span>
+						<span class="boxsize">Size: <span data-var="box1size"></span> ducks</span>
+						<span class="boxinput"><span data-var="box1in" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span> ducks/sec</span>
+						<span class="boxoutput"><span data-var="box1out" class="TKAdjustableNumber inputField" data-min="-1" data-max="1" data-step="0.01" data-format="%.2f"></span> <em>M</em><sub>1</sub></span>
 					</div>
 					<div class="modelbox" id="modelbox2">
-						<span class="boxname">Downstream lake<br /></span>
-						<span class="boxsize">Size: <span data-var="box2size"></span></span>
-						<span class="boxinput"><span data-var="box2in" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span></span>
-						<span class="boxoutput"><span data-var="box2out" class="TKAdjustableNumber inputField" data-min="-1" data-max="1" data-step="0.01" data-format="%.2f"></span></span>
+						<span class="boxname"><em>M</em><sub>2</sub><br /></span>
+						<span class="boxsize">Size: <span data-var="box2size"></span> ducks</span>
+						<span class="boxinput"><span data-var="box2in" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span> ducks/sec</span>
+						<span class="boxoutput"><span data-var="box2out" class="TKAdjustableNumber inputField" data-min="-1" data-max="1" data-step="0.01" data-format="%.2f"></span> <em>M</em><sub>2</sub></span>
 					</div>
 				</div>
 				<!-- <div class="examplespace workspace">
@@ -80,17 +82,17 @@
 					</div>
 					<div style="clear:both;"></div>
 				</div> -->
-				<!-- <h3>The formal equations</h3>
-								<p>The following system of differential equations is the <em>Lotka-Volterra model</em> describing the interactions between two groups of animals: predators and prey.</p>
-								<div class="examplespace equationspace">
-									$$\begin{eqnarray}\eqalign{\frac{\mathrm{d} X}{\mathrm{d} t} &=&&k_1X &-& k_3 X Y &\color{red}{-}& \color{red}{k_4 X^2} \\
-									\frac{\mathrm{d} Y}{\mathrm{d} t} &=&-&k_2 Y &+& \alpha k_3 X Y&&}\label{eq:LotkaVolterra}\end{eqnarray}$$
-								</div>
-								<p>\(X\) is the number of prey animals, \(Y\) the number of predators. \(k_1\) is the prey growth rate. \(k_2\) is the predator death rate. \(k_3\) is the <em>predation rate</em>, i.e. it describes the interaction between predator and prey animals.</p>
-								<p>By adjusting \(\alpha\), we can describe how many predators are &ldquo;created&rdquo; from each eaten prey animal. If \(\alpha=1\), each eaten prey animal results in one new predator being added. It is more realistic, however, to set \(\alpha\) to a value smaller than one, i.e. to assume that it needs more than one eaten prey animal to add another predator.</p>
-								<p>The term marked <span style="color: red;">red</span> is an addition to the basic model that adds self-interaction between prey animals, i.e. it causes the prey population to decrease if it gets too large (for instance, due to increased competition for scarce food).</p>
-								 -->
-				<!-- <aside>Created by <a href="http://pfenninger.org/">Stefan Pfenninger</a>. This tool uses <a href="http://jsxgraph.uni-bayreuth.de/">JSXGraph</a> for calculations and graphing, <a href="http://worrydream.com/Tangle/">Tangle</a> for interactive adjustment of the equations, and <a href="http://www.mathjax.org/">MathJax</a> for math rendering. The code for graphing the Lotka-Volterra equations is based on the <a href="http://jsxgraph.uni-bayreuth.de/wiki/index.php/Lotka-Volterra_equations">JSXGraph example</a>.</aside> -->
+				<h3>The formal equations</h3>
+				<p>This is a general 2-box model:</p>
+				<div class="examplespace equationspace">
+				    <div style="float: left; width: 400px; padding-top: 26px">
+					$$\begin{align}
+                        \frac{\mathrm{d} M_1}{\mathrm{d} t} = J_1-(k_1 + k_3)M_1 + k_2M_2\\
+                        \frac{\mathrm{d} M_2}{\mathrm{d} t} = J_2 + k_1 M_1 - (k_2 + k_4)M_2
+					\end{align}$$
+					</div>
+					<img src="images/2box.png" width="252" height="162" alt="2box">
+				</div>
 			</article>
 		</section>
 	</div>

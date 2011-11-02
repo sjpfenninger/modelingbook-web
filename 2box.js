@@ -1,19 +1,26 @@
+function getBoxSize(box) {
+    var boxsize = $("#modelbox"+box).width() * $("#modelbox"+box).height() / 100;
+    return boxsize
+}
+
 function setUpUI() {
     var updateBoxSize = function() {
         jsPlumb.repaintEverything();
-        tangle.setValue("box1size", $("#modelbox1").width() * $("#modelbox1").height());
-        tangle.setValue("box2size", $("#modelbox2").width() * $("#modelbox2").height());
+        tangle.setValue("box1size", getBoxSize(1));
+        tangle.setValue("box2size", getBoxSize(2));
     }
     
     $('.modelbox')
         .resizable({ resize: function(event, ui) {updateBoxSize()}, autoHide: true, grid: [20, 20] });
     jsPlumb.draggable($('.modelbox'));
     $('.modelbox').draggable("option", {"containment":'parent', "cursor":'hand', "opacity":'0.5', });
+    jsPlumb.Defaults.LabelStyle = { font: " " }; // Set this to " " so that jsPlumb doesn't add font settings to labels
     var common = {
     	endpoint:"Blank",
     	endpointStyle:{ fillStyle: "" },
     	connector:"Straight",
     	paintStyle:{ strokeStyle:"#727272", lineWidth:2 }
+    	
     };
     connector_box1_box2 = jsPlumb.connect({
     	source:"modelbox1", 
@@ -21,7 +28,7 @@ function setUpUI() {
     	anchors:[[1, 0.25, 1, 0], [0, 0.25, -1, 0]],
     	overlays:[ 
         		["Arrow", { id: 'arrow', width:12, length:10, location:1} ],
-        		[ "Label", { id: 'label', label:'<span data-var="box1to2" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span>', location:0.45, cssClass:"connectorlabel label_box1_box2"} ]
+        		[ "Label", { id: 'label', label:'<span data-var="box1to2" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span> <em>M</em><sub>1</sub>', location:0.45, cssClass:"connectorlabel label_box1_box2"} ]
         	],
     }, common);
     connector_box2_box1 = jsPlumb.connect({
@@ -30,7 +37,7 @@ function setUpUI() {
     	anchors:[[0, 0.75, -1, 0], [1, 0.75, 1, 0]],
     	overlays:[ 
         		["Arrow", { id: 'arrow', width:12, length:10, location:1} ],
-        		[ "Label", { id: 'label', label:'<span data-var="box2to1" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span>', location:0.55, cssClass:"connectorlabel label_box2_box1"} ]
+        		[ "Label", { id: 'label', label:'<span data-var="box2to1" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span> <em>M</em><sub>2</sub>', location:0.55, cssClass:"connectorlabel label_box2_box1"} ]
         	],
     }, common);
     firstboxresize = true;
@@ -40,6 +47,7 @@ function setUpUI() {
         }
         firstboxresize = false;
     });
+    // MathJax.Hub.Queue(["Typeset",MathJax.Hub]); // Make sure MathJax catches stuff in any added labels
 }
 
 function updateUIElements () {
@@ -75,8 +83,8 @@ function setUpTangle() {
 			this.box2out = 1.0;
 			this.box1to2 = 1.0;
 			this.box2to1 = 0;
-			this.box1size = $("#modelbox1").width() * $("#modelbox1").height();
-			this.box2size = $("#modelbox2").width() * $("#modelbox2").height();
+			this.box1size = getBoxSize(1);
+			this.box2size = getBoxSize(2);
         },
         update: function () {
 			if (tangleInitialized) {
