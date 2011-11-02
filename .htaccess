@@ -1,0 +1,8 @@
+ErrorDocument 404 /error-404.html
+
+# No directory listings in subfolders
+Options All -Indexes
+
+# Ignore git-related things
+RedirectMatch 404 /\\.git(/|$)
+RedirectMatch 404 /\\.gitignore
