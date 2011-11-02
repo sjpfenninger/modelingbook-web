@@ -20,8 +20,8 @@ ul{padding-left:20px;}
 .toggle-2-off{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;color:#4466ff;padding:0px 12px 0px 8px;-moz-border-radius-topright:0.5em;-moz-border-radius-bottomright:0.5em;-webkit-border-top-right-radius:0.5em;-webkit-border-bottom-right-radius:0.5em;border:1px solid #aaa;border-left:none;background-color:#fff;display:inline;}
 #modelboxcontainer{height:300px;}
 .modelbox{position:relative;background:#bbc7ff;border:1px solid #113cff;padding:5px;font-size:0.9em;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;cursor:move;box-shadow:2px 2px 19px #AAAAAA;z-index:10;}.modelbox .TKAdjustableNumber{cursor:col-resize;}
-#modelbox1{width:180px;height:120px;left:40px;top:20px;}
-#modelbox2{width:130px;height:120px;left:400px;top:-112px;}
+#modelbox1{width:180px;height:120px;left:130px;top:70px;}
+#modelbox2{width:130px;height:120px;left:490px;top:-62px;}
 .boxname{font-weight:bold;}
 .connectorlabel{padding:5px;background:url("images/t-80.png") repeat scroll 0% 0% transparent;z-index:20;}
 .boxinput{position:absolute;top:-42px;left:10px;padding:10px 10px 10px 20px;background:transparent url("images/arrow-down.png") no-repeat scroll 0 bottom;}
