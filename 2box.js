@@ -14,7 +14,7 @@ function setUpUI() {
         .resizable({ resize: function(event, ui) {updateBoxSize()}, autoHide: true, grid: [20, 20] });
     jsPlumb.draggable($('.modelbox'));
     $('.modelbox').draggable("option", {"containment":'parent', "cursor":'hand', "opacity":'0.5', });
-    jsPlumb.Defaults.LabelStyle = { font: " " }; // Set this to " " so that jsPlumb doesn't add font settings to labels
+    jsPlumb.Defaults.LabelStyle = { font: " ", color: " " }; // Set these to " " so that jsPlumb doesn't mess up CSS styles
     var common = {
     	endpoint:"Blank",
     	endpointStyle:{ fillStyle: "" },
@@ -64,11 +64,11 @@ function updateUIElements () {
         var former_fieldNumber = $(this).data('former') || fieldNumber
         if ($(this).data('former') == 0) {former_fieldNumber = 0;}
         if (fieldNumber == 0) {
-            fieldContainer.addClass("eqInactive");
+            fieldContainer.addClass("var_inactive");
         } else {
-            fieldContainer.removeClass("eqInactive");
-            if (fieldNumber > 0) {fieldContainer.addClass("eqPositive");fieldContainer.removeClass("eqNegative");}
-            if (fieldNumber < 0) {fieldContainer.addClass("eqNegative");fieldContainer.removeClass("eqPositive");}
+            fieldContainer.removeClass("var_inactive");
+            if (fieldNumber > 0) {fieldContainer.addClass("var_positive");fieldContainer.removeClass("var_negative");}
+            if (fieldNumber < 0) {fieldContainer.addClass("var_negative");fieldContainer.removeClass("var_positive");}
         }
         $(this).data('former', fieldNumber);
     });
@@ -85,7 +85,7 @@ function setUpTangle() {
             this.box1in = 0.5;
             this.box1out = 0.1;
 			this.box2in = 0.008;
-			this.box2out = 1.0;
+			this.box2out = 0;
 			this.box1to2 = 1.0;
 			this.box2to1 = 0;
 			this.box1size = getBoxSize(1);

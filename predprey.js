@@ -21,9 +21,9 @@ function setUpTangle() {
 				predprey_board.fullUpdate() // phase_board is a dependent child, no need to fullUpdate it
 			}
 			if (this.k4 > 0) {
-				$("span#k4_container").removeClass("eqInactive");
+				$("span#k4_container").removeClass("var_inactive");
 			} else {
-				$("span#k4_container").addClass("eqInactive");
+				$("span#k4_container").addClass("var_inactive");
 			}
 			this.epsilon = (this.k4 * this.k2) / this.k3
 			this.Xinf = this.k2 / (this.k3 * this.alpha);
