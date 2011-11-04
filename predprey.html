@@ -1,10 +1,14 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <title>Interactive Models &raquo; Predator-prey model</title>
 	<link href="favicon.png" rel="shortcut icon">
-	<link href="style.css" type="text/css" rel="stylesheet">
+	<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="libraries/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="libraries/jquery-1.6.4.min.js"></script>
     <!-- Tangle -->
     <script type="text/javascript" src="libraries/Tangle.js"></script>
@@ -24,63 +28,76 @@
 </head>
 
 <body>
-	<script>
-	$(document).ready(function(){
-		setUpTangle();
-		setUpToggle();
-	});
-   </script>
-	<div>
-		<section id="content">
-			<article>
-				<header>
-					
-					<!-- <h1><span id="title1">Interactive</span> <span id="title2">Models</span></h1> -->
-					
-				</header>
-				
-				<h2>The Lotka-Volterra model</h2>
-				<p>Each of the parameters <span class="TKAdjustableNumber">marked like this</span> below can be changed. Simply click and drag them. You will immediately see the effect on the steady states, the population development over time, and the phase space.</p>
-				<div class="examplespace workspace">
-					<div id="predprey_settings">
-						<!-- <div id="toggle">
-							<p><span class="sans"><strong>Input method</strong> <small>(changing this resets the numbers)</small></span><br /><a href="javascript:void(0);" id="toggle-1" class="toggle-1-on">Adjustable numbers</a><a href="javascript:void(0);" id="toggle-2" class="toggle-2-off">Input boxes</a></p>
-							<p><br/></p>
-							<p><span class="sans"><strong>Stability</strong></span><br />
-								tr \( =\)<span data-var="trace" data-format="%.3f"></span><br />
-								\(\Delta =\)<span data-var="disc" data-format="%.3f"></span>
-							</p>
-						</div> -->
-						<p><span class="sans"><strong>Dynamic equations</strong></span><br />
-							Prey: \(\eqalign{\frac{\mathrm{d} X}{\mathrm{d} t} =}\) <span data-var="k1" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"> yr<sup>-1</sup></span> \(X - \) <span data-var="k3" class="TKAdjustableNumber inputField" data-min="0" data-max="0.1" data-step="0.001" data-format="%.3f"> yr<sup>-1</sup></span> \(XY\)<span id="k4_container">\(-\)<span data-var="k4" class="TKAdjustableNumber inputField" data-min="0" data-max="0.01" data-step="0.0001" data-format="%.4f"> yr<sup>-1</sup></span> \(X^2\)</span><br />
-							Predators: \(\eqalign{\frac{\mathrm{d} Y}{\mathrm{d} t} =}-\)<span data-var="k2" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"> yr<sup>-1</sup></span>\(Y +\)<span data-var="alpha" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span>\(\times\)<span data-var="k3" class="TKAdjustableNumber inputField" data-min="0" data-max="0.1" data-step="0.001" data-format="%.3f"> yr<sup>-1</sup></span>\(XY\)</p>
-							<p><span class="sans"><strong>Initial state</strong></span>
-							\( \qquad\) Prey: \(X^0=\)<span data-var="X0" class="TKAdjustableNumber inputField" data-min="0" data-max="200" data-format="%.0f"> animals</span>\(, \qquad\) Predators: \(Y^0=\)<span data-var="Y0" class="TKAdjustableNumber inputField" data-min="0" data-max="200" data-format="%.0f"> animals</span></p>
-							<p><span class="sans"><strong>Steady state</strong></span>
-							\( \qquad X_2^\infty =\)<span data-var="Xinf" data-format="%.1f"> animals</span> \(, \qquad Y_2^\infty =\)<span data-var="Yinf" data-format="%.1f"> animals</span>\(\qquad\) (<span data-var="stability"></span>)<br />
-						</p>
-					</div>
-					<div style ="width: 470px; float: left; margin-right: 20px">
-						<span class="sans"><strong>Population development</strong></span>
-						<div class="jsxbox" id="predprey_board" style="height:300px;"></div>
-					</div>
-					<div style ="width: 300px; float: left;">
-						<span class="sans"><strong>Phase space</strong></span>
-						<div class="jsxbox" id="phase_board" style="height:300px;"></div>
-					</div>
-					<div style="clear:both;"></div>
-				</div>
-				<h3>The formal equations</h3>
-				<p>The following system of differential equations is the <em>Lotka-Volterra model</em> describing the interactions between two groups of animals: predators and prey.</p>
-				<div class="examplespace equationspace">
-					$$\begin{eqnarray}\eqalign{\frac{\mathrm{d} X}{\mathrm{d} t} &=&&k_1X &-& k_3 X Y &\color{red}{-}& \color{red}{k_4 X^2} \\
-					\frac{\mathrm{d} Y}{\mathrm{d} t} &=&-&k_2 Y &+& \alpha k_3 X Y&&}\label{eq:LotkaVolterra}\end{eqnarray}$$
-				</div>
-				<p>\(X\) is the number of prey animals, \(Y\) the number of predators. \(k_1\) is the prey growth rate. \(k_2\) is the predator death rate. \(k_3\) is the <em>predation rate</em>, i.e. it describes the interaction between predator and prey animals.</p>
-				<p>By adjusting \(\alpha\), we can describe how many predators are &ldquo;created&rdquo; from each eaten prey animal. If \(\alpha=1\), each eaten prey animal results in one new predator being added. It is more realistic, however, to set \(\alpha\) to a value smaller than one, i.e. to assume that it needs more than one eaten prey animal to add another predator.</p>
-				<p>The term marked <span style="color: red;">red</span> is an addition to the basic model that adds self-interaction between prey animals, i.e. it causes the prey population to decrease if it gets too large (for instance, due to increased competition for scarce food).</p>
-                <!-- <aside>Created by <a href="http://pfenninger.org/">Stefan Pfenninger</a>. This tool uses <a href="http://jsxgraph.uni-bayreuth.de/">JSXGraph</a> for calculations and graphing, <a href="http://worrydream.com/Tangle/">Tangle</a> for interactive adjustment of the equations, and <a href="http://www.mathjax.org/">MathJax</a> for math rendering. The code for graphing the Lotka-Volterra equations is based on the <a href="http://jsxgraph.uni-bayreuth.de/wiki/index.php/Lotka-Volterra_equations">JSXGraph example</a>.</aside> -->
-			</article>
-		</section>
-	</div>
-</body></html>
+ 	<script>
+ 	$(document).ready(function(){
+ 		setUpTangle();
+ 		setUpToggle();
+ 	});
+    </script> 
+    <div class="topbar">
+        <div class="fill">
+            <div class="container">
+                <a class="brand" href="index.html">Modeling the environment</a>
+                <ul class="nav">
+                    <!-- <li class="active"><a href="#">Home</a></li> -->
+                    <!-- <li><a href="#">About</a></li> -->
+                    <!-- <li><a href="#">Contact</a></li> -->
+                </ul>
+                <ul class="nav secondary-nav">
+                    <!-- <li><a href="">Help</a></li> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content">
+            <div class="page-header">
+                <h1>Lotka-Volterra model</h1>
+            </div>
+            <div class="row">
+                <div class="span16">
+    				<p>Each of the parameters <span class="TKAdjustableNumber">marked like this</span> below can be changed. Simply click and drag them. You will immediately see the effect on the steady states, the population development over time, and the phase space.</p>
+    				<div class="examplespace workspace">
+    					<div id="predprey_settings">
+    						<!-- <div id="toggle">
+    							<p><span class="sans"><strong>Input method</strong> <small>(changing this resets the numbers)</small></span><br /><a href="javascript:void(0);" id="toggle-1" class="toggle-1-on">Adjustable numbers</a><a href="javascript:void(0);" id="toggle-2" class="toggle-2-off">Input boxes</a></p>
+    							<p><br/></p>
+    							<p><span class="sans"><strong>Stability</strong></span><br />
+    								tr \( =\)<span data-var="trace" data-format="%.3f"></span><br />
+    								\(\Delta =\)<span data-var="disc" data-format="%.3f"></span>
+    							</p>
+    						</div> -->
+    						<p><span class="sans"><strong>Dynamic equations</strong></span><br />
+    							Prey: \(\eqalign{\frac{\mathrm{d} X}{\mathrm{d} t} =}\) <span data-var="k1" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"> yr<sup>-1</sup></span> \(X - \) <span data-var="k3" class="TKAdjustableNumber inputField" data-min="0" data-max="0.1" data-step="0.001" data-format="%.3f"> yr<sup>-1</sup></span> \(XY\)<span id="k4_container">\(-\)<span data-var="k4" class="TKAdjustableNumber inputField" data-min="0" data-max="0.01" data-step="0.0001" data-format="%.4f"> yr<sup>-1</sup></span> \(X^2\)</span><br />
+    							Predators: \(\eqalign{\frac{\mathrm{d} Y}{\mathrm{d} t} =}-\)<span data-var="k2" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"> yr<sup>-1</sup></span>\(Y +\)<span data-var="alpha" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span>\(\times\)<span data-var="k3" class="TKAdjustableNumber inputField" data-min="0" data-max="0.1" data-step="0.001" data-format="%.3f"> yr<sup>-1</sup></span>\(XY\)</p>
+    							<p><span class="sans"><strong>Initial state</strong></span>
+    							\( \qquad\) Prey: \(X^0=\)<span data-var="X0" class="TKAdjustableNumber inputField" data-min="0" data-max="200" data-format="%.0f"> animals</span>\(, \qquad\) Predators: \(Y^0=\)<span data-var="Y0" class="TKAdjustableNumber inputField" data-min="0" data-max="200" data-format="%.0f"> animals</span></p>
+    							<p><span class="sans"><strong>Steady state</strong></span>
+    							\( \qquad X_2^\infty =\)<span data-var="Xinf" data-format="%.1f"> animals</span> \(, \qquad Y_2^\infty =\)<span data-var="Yinf" data-format="%.1f"> animals</span>\(\qquad\) (<span data-var="stability"></span>)<br />
+    						</p>
+    					</div>
+    					<div style ="width: 470px; float: left; margin-right: 20px">
+    						<span class="sans"><strong>Population development</strong></span>
+    						<div class="jsxbox" id="predprey_board" style="height:300px;"></div>
+    					</div>
+    					<div style ="width: 300px; float: left;">
+    						<span class="sans"><strong>Phase space</strong></span>
+    						<div class="jsxbox" id="phase_board" style="height:300px;"></div>
+    					</div>
+    					<div style="clear:both;"></div>
+    				</div>
+    				<h3>The formal equations</h3>
+    				<p>The following system of differential equations is the <em>Lotka-Volterra model</em> describing the interactions between two groups of animals: predators and prey.</p>
+    				<div class="examplespace equationspace">
+    					$$\begin{eqnarray}\eqalign{\frac{\mathrm{d} X}{\mathrm{d} t} &=&&k_1X &-& k_3 X Y &\color{red}{-}& \color{red}{k_4 X^2} \\
+    					\frac{\mathrm{d} Y}{\mathrm{d} t} &=&-&k_2 Y &+& \alpha k_3 X Y&&}\label{eq:LotkaVolterra}\end{eqnarray}$$
+    				</div>
+    				<p>\(X\) is the number of prey animals, \(Y\) the number of predators. \(k_1\) is the prey growth rate. \(k_2\) is the predator death rate. \(k_3\) is the <em>predation rate</em>, i.e. it describes the interaction between predator and prey animals.</p>
+    				<p>By adjusting \(\alpha\), we can describe how many predators are &ldquo;created&rdquo; from each eaten prey animal. If \(\alpha=1\), each eaten prey animal results in one new predator being added. It is more realistic, however, to set \(\alpha\) to a value smaller than one, i.e. to assume that it needs more than one eaten prey animal to add another predator.</p>
+    				<p>The term marked <span style="color: red;">red</span> is an addition to the basic model that adds self-interaction between prey animals, i.e. it causes the prey population to decrease if it gets too large (for instance, due to increased competition for scarce food).</p>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+</body>
+</html>

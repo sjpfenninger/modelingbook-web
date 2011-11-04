@@ -1,29 +1,50 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <title>Interactive Models</title>
-	<link href="favicon.png" rel="shortcut icon">
-	<link href="style.css" type="text/css" rel="stylesheet">
-	<script src="libraries/raphael-min.js"></script>
-
+    <link href="favicon.png" rel="shortcut icon">
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="libraries/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-	<div id="preview">
-		<section id="content">
-			<article class="measure">
-				<header>
-					
-                    <h1><span id="title1">Interactive</span> <span id="title2">Models</span></h1>
-					
-				</header>
-				
-				<p>Only one example right now (more to come):</p>
-				<ul>
-				    <li><a href="predprey.html">Predator-prey model</li>
-				</ul>
-			</article>
-		</section>
-	</div>
-</body></html>
+<body>   
+    <div class="topbar">
+        <div class="fill">
+            <div class="container">
+                <a class="brand" href="index.html">Modeling the environment</a>
+                <ul class="nav">
+                    <!-- <li class="active"><a href="#">Home</a></li> -->
+                    <!-- <li><a href="#">About</a></li> -->
+                    <!-- <li><a href="#">Contact</a></li> -->
+                </ul>
+                <ul class="nav secondary-nav">
+                    <!-- <li><a href="">Help</a></li> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content">
+            <div class="page-header">
+                <h1>Interactive Models <small>DRAFT - do not publicize</small></h1>
+            </div>
+            <div class="row">
+                <div class="span16">
+    				<p>Existing examples so far:</p>
+    				<ul>
+    				    <li><a href="predprey.html">Lotka-Volterra model</a></li>
+    				    <li><a href="2box.html">Two-box model</a></li>
+    				</ul>
+    			</div>
+    		</div>
+    	</div>
+        <footer>
+            <p>Created by <a href="http://pfenninger.org/">Stefan Pfenninger</a>. The following libraries and resources are used: <a href="http://jsxgraph.uni-bayreuth.de/">JSXGraph</a> for calculations and graphing, <a href="http://worrydream.com/Tangle/">Tangle</a> for interactive adjustment of the parameters, and <a href="http://www.mathjax.org/">MathJax</a> for math rendering. Box connections are rendered with <a href="http://jsplumb.org/">jsPlumb</a>. The CSS is based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>. Some artwork from <a href="http://thenounproject.com/">the Noun Project</a>. The code for graphing the Lotka-Volterra equations is based on the <a href="http://jsxgraph.uni-bayreuth.de/wiki/index.php/Lotka-Volterra_equations">JSXGraph Lotka-Volterra example</a>.</p>
+        </footer>
+    </div>
+</body>
+</html>
