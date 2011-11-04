@@ -1,10 +1,16 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <title>Interactive Models &raquo; Two-box model</title>
-	<link href="favicon.png" rel="shortcut icon">
-	<link href="style.css" type="text/css" rel="stylesheet">
+    <link href="favicon.png" rel="shortcut icon">
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="libraries/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
 	<!-- Tangle -->
     <script type="text/javascript" src="libraries/Tangle.js"></script>
     <link rel="stylesheet" href="libraries/TangleKit/TangleKit.css" type="text/css">
@@ -30,70 +36,68 @@
 </head>
 
 <body>
-	<script>
+    <script>
 	$(document).ready(function(){
-		setUpUI();
-		setUpTangle();
+		boxModel.init();
+		boxModel.setupTangle();
 	});
-   </script>
-	<div>
-		<section id="content">
-			<article>
-				<header>
-					
-					<!-- <h1><span id="title1">Interactive</span> <span id="title2">Models</span></h1> -->
-					
-				</header>
-				
-				<h2>Linear two-box model</h2>
-				<p>Each of the parameters <span class="TKAdjustableNumber">marked like this</span> below can be changed (they become <span class="var_inactivedemo">grey</span> when they are zero).</p>
-				<div class="examplespace workspace" id="modelboxcontainer">
-					<div class="modelbox" id="modelbox1">
-						<span class="boxname"><em>M</em><sub>1</sub><br /></span>
-						<span class="boxsize">Size: <span data-var="box1size"></span> ducks</span>
-						<span class="boxinput"><span data-var="box1in" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span> ducks/sec</span>
-						<span class="boxoutput"><span data-var="box1out" class="TKAdjustableNumber inputField" data-min="-1" data-max="1" data-step="0.01" data-format="%.2f"></span> <em>M</em><sub>1</sub></span>
-					</div>
-					<div class="modelbox" id="modelbox2">
-						<span class="boxname"><em>M</em><sub>2</sub><br /></span>
-						<span class="boxsize">Size: <span data-var="box2size"></span> ducks</span>
-						<span class="boxinput"><span data-var="box2in" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span> ducks/sec</span>
-						<span class="boxoutput"><span data-var="box2out" class="TKAdjustableNumber inputField" data-min="-1" data-max="1" data-step="0.01" data-format="%.2f"></span> <em>M</em><sub>2</sub></span>
-					</div>
-				</div>
-				<!-- <div class="examplespace workspace">
-					<div id="predprey_settings">
-						<p><span class="sans"><strong>Dynamic equations</strong></span><br />
-							Prey: \(\eqalign{\frac{\mathrm{d} X}{\mathrm{d} t} =}\) <span data-var="k1" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"> yr<sup>-1</sup></span> \(X - \) <span data-var="k3" class="TKAdjustableNumber inputField" data-min="0" data-max="0.1" data-step="0.001" data-format="%.3f"> yr<sup>-1</sup></span> \(XY\)<span id="k4_container">\(-\)<span data-var="k4" class="TKAdjustableNumber inputField" data-min="0" data-max="0.01" data-step="0.0001" data-format="%.4f"> yr<sup>-1</sup></span> \(X^2\)</span><br />
-							Predators: \(\eqalign{\frac{\mathrm{d} Y}{\mathrm{d} t} =}-\)<span data-var="k2" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"> yr<sup>-1</sup></span>\(Y +\)<span data-var="alpha" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span>\(\times\)<span data-var="k3" class="TKAdjustableNumber inputField" data-min="0" data-max="0.1" data-step="0.001" data-format="%.3f"> yr<sup>-1</sup></span>\(XY\)</p>
-							<p><span class="sans"><strong>Initial state</strong></span>
-							\( \qquad\) Prey: \(X^0=\)<span data-var="X0" class="TKAdjustableNumber inputField" data-min="0" data-max="200" data-format="%.0f"> animals</span>\(, \qquad\) Predators: \(Y^0=\)<span data-var="Y0" class="TKAdjustableNumber inputField" data-min="0" data-max="200" data-format="%.0f"> animals</span></p>
-							<p><span class="sans"><strong>Steady state</strong></span>
-							\( \qquad X_2^\infty =\)<span data-var="Xinf" data-format="%.1f"> animals</span> \(, \qquad Y_2^\infty =\)<span data-var="Yinf" data-format="%.1f"> animals</span>\(\qquad\) (<span data-var="stability"></span>)<br />
-						</p>
-					</div>
-					<div style ="width: 470px; float: left; margin-right: 20px">
-						<span class="sans"><strong>Population development</strong></span>
-						<div class="jsxbox" id="predprey_board" style="height:300px;"></div>
-					</div>
-					<div style ="width: 300px; float: left;">
-						<span class="sans"><strong>Phase space</strong></span>
-						<div class="jsxbox" id="phase_board" style="height:300px;"></div>
-					</div>
-					<div style="clear:both;"></div>
-				</div> -->
-				<h3>The formal equations</h3>
-				<p>This is a general 2-box model:</p>
-				<div class="examplespace equationspace">
-				    <div style="float: left; width: 400px; padding-top: 26px">
-					$$\begin{align}
-                        \frac{\mathrm{d} M_1}{\mathrm{d} t} = J_1-(k_1 + k_3)M_1 + k_2M_2\\
-                        \frac{\mathrm{d} M_2}{\mathrm{d} t} = J_2 + k_1 M_1 - (k_2 + k_4)M_2
-					\end{align}$$
-					</div>
-					<img src="images/2box.png" width="252" height="162" alt="2box">
-				</div>
-			</article>
-		</section>
-	</div>
-</body></html>
+    </script>
+   
+    <div class="topbar">
+        <div class="fill">
+            <div class="container">
+                <a class="brand" href="#">Modeling the environment</a>
+                <ul class="nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <ul class="nav secondary-nav">
+                    <li><a href="">Help</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+   
+    <div class="container">
+        <div class="content">
+            <div class="page-header">
+                <h1>Linear two-box model <small>Supporting text or tagline</small></h1>
+            </div>
+            <div class="row">
+                <div class="span16">
+                    <p>Each of the parameters <span class="TKAdjustableNumber">marked like this</span> below can be changed (they become <span class="var_inactivedemo">grey</span> when they are zero).</p>
+                    <div class="examplespace workspace" id="modelboxcontainer">
+                        <div class="modelbox" id="modelbox1">
+        	                <span class="boxname"><em>M</em><sub>1</sub><br /></span>
+        	                <span class="boxsize">Size: <span data-var="box1size"></span> ducks</span>
+        	                <span class="boxinput"><span data-var="box1in" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span> ducks/sec</span>
+        	                <span class="boxoutput"><span data-var="box1out" class="TKAdjustableNumber inputField" data-min="-1" data-max="1" data-step="0.01" data-format="%.2f"></span> <em>M</em><sub>1</sub></span>
+                        </div>
+                        <div class="modelbox" id="modelbox2">
+        	                <span class="boxname"><em>M</em><sub>2</sub><br /></span>
+        	                <span class="boxsize">Size: <span data-var="box2size"></span> ducks</span>
+        	                <span class="boxinput"><span data-var="box2in" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span> ducks/sec</span>
+        	                <span class="boxoutput"><span data-var="box2out" class="TKAdjustableNumber inputField" data-min="-1" data-max="1" data-step="0.01" data-format="%.2f"></span> <em>M</em><sub>2</sub></span>
+                        </div>
+                    </div>
+                    <h2>The formal equations</h2>
+                    <p>This is a general 2-box model:</p>
+                    <div class="examplespace equationspace">
+                        <div style="float: left; width: 400px; padding-top: 26px">
+                            $$\begin{align}
+                            \frac{\mathrm{d} M_1}{\mathrm{d} t} = J_1-(k_1 + k_3)M_1 + k_2M_2\\
+                            \frac{\mathrm{d} M_2}{\mathrm{d} t} = J_2 + k_1 M_1 - (k_2 + k_4)M_2
+                            \end{align}$$
+                        </div>
+                        <img src="images/2box.png" width="252" height="162" alt="2box">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <!-- <p>Various footer information here</p> -->
+        </footer>
+    </div>
+</body>
+</html>
