@@ -21,7 +21,7 @@ body{padding-top:60px;}
 #modelbox2{width:140px;height:120px;left:490px;top:70px;}
 .boxname{font-weight:bold;}
 .connectorlabel{padding:5px;background:url("images/t-80.png") repeat scroll 0% 0% transparent;z-index:20;}
-.boxinput{position:absolute;top:-42px;left:10px;padding:10px 10px 10px 20px;background:transparent url("images/arrow-down.png") no-repeat scroll 0 bottom;}
+.boxinput{position:absolute;top:-38px;left:10px;padding:10px 10px 10px 20px;background:transparent url("images/arrow-down.png") no-repeat scroll 0 bottom;}
 .boxoutput{position:absolute;bottom:6px;right:0;width:60px;padding:15px 5px 10px 24px;background-repeat:no-repeat;background-position:4px 0, 0 bottom;}
 .boxoutput.var_positive{background-image:url("images/arrow-down.png"),url("images/bottom.png");}
 .boxoutput.var_negative{background-image:url("images/arrow-up.png"),url("images/bottom.png");}

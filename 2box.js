@@ -64,6 +64,8 @@ var boxModel = {
     			this.box2out = 0;
     			this.box1to2 = 1.0;
     			this.box2to1 = 0;
+    			this.box1start = 10;
+    			this.box2start = 20;
     			this.box1size = boxModel.getBoxSize(1);
     			this.box2size = boxModel.getBoxSize(2);
             },
@@ -139,19 +141,10 @@ var boxModel = {
     	var box2color = '#FC8D59'
     	var phasecolor = '#31A354'
 
-        // Dynamic initial value as gliders on the y-axis
-        startprey = solution_board.createElement('glider', [0, 50, solution_board.defaultAxes.y], {name:'<em>M<sub>1</sub></em>',strokeColor:box1color,fillColor:box1color});
-    	startpred = solution_board.createElement('glider', [0, 30, solution_board.defaultAxes.y], {name:'<em>M<sub>2</sub></em>',strokeColor:box2color,fillColor:box2color});
-    	solution_board.addHook(function() {
-    		tangle.setValue("X0", startprey.Y());
-    		tangle.setValue("Y0", startpred.Y());
-    	});
-
     	// Variables for the JXG.Curves
-        var preycurve = null;
-        var predcurve = null;
+        var box1curve = null;
+        var box2curve = null;
     	var phasecurve = null;
-
 
         // Initialise ODE and solve it with JXG.Math.Numerics.rungeKutta()
         function ode() {
@@ -160,23 +153,23 @@ var boxModel = {
             // Number of steps. 1000 should be enough
             var N = 1000;
 
-    		var k1 = tangle.getValue("k1");
-            var k2 = tangle.getValue("k2");
-            var k3 = tangle.getValue("k3");
-            var alpha = tangle.getValue("alpha");
-    		var k4 = tangle.getValue("k4");
+    		var in_1 = tangle.getValue("box1in");
+            var in_2 = tangle.getValue("box2in");
+            var out_1 = tangle.getValue("box1out");
+            var out_2 = tangle.getValue("box2out");
+    		var conn_1_2 = tangle.getValue("box1to2");
+    		var conn_2_1 = tangle.getValue("box2to1");
 
             // Right hand side of the ODE dx/dt = f(t, x)
             var f = function(t, x) {
                 var y = [];
-                y[0] = k1*x[0] - k3*x[0]*x[1] -k4*x[0]*x[0];
-                y[1] = -k2*x[1] + alpha*k3*x[0]*x[1];
-
+                y[0] = in_1 - (conn_1_2+out_1)*x[0] + conn_2_1*x[1];
+                y[1] = in_2 + conn_1_2*x[0]         - (conn_2_1+out_2)*x[1];
                 return y;
             }
 
             // Initial value
-            var x0 = [startprey.Y(), startpred.Y()];
+            var x0 = [tangle.getValue("box1start"), tangle.getValue("box2start")];
 
             // Solve ode
             var data = JXG.Math.Numerics.rungeKutta('heun', x0, I, N, f);
@@ -198,17 +191,17 @@ var boxModel = {
 
         // copy data to arrays so we can plot it using JXG.Curve
         var t = [];
-        var dataprey = [];
-        var datapred = [];
+        var dataBox1 = [];
+        var dataBox2 = [];
         for(var i=0; i<data.length; i++) {
             t[i] = data[i][2];
-            dataprey[i] = data[i][0];
-            datapred[i] = data[i][1];
+            dataBox1[i] = data[i][0];
+            dataBox2[i] = data[i][1];
         }
 
     	// Plot prey
-        preycurve = solution_board.createElement('curve', [t, dataprey], {strokeColor:box1color, strokeWidth:'2'});
-        preycurve.updateDataArray = function() {
+        box1curve = solution_board.createElement('curve', [t, dataBox1], {strokeColor:box1color, strokeWidth:'2'});
+        box1curve.updateDataArray = function() {
             var data = ode();
             this.dataX = [];
             this.dataY = [];
@@ -219,8 +212,8 @@ var boxModel = {
         }
 
         // Plot predators
-        predcurve = solution_board.createElement('curve', [t, datapred], {strokeColor:box2color, strokeWidth:'2'});
-        predcurve.updateDataArray = function() {
+        box2curve = solution_board.createElement('curve', [t, dataBox2], {strokeColor:box2color, strokeWidth:'2'});
+        box2curve.updateDataArray = function() {
             var data = ode();
             this.dataX = [];
             this.dataY = [];
@@ -232,7 +225,7 @@ var boxModel = {
 
     	// Plot phase space with steady states
 
-    	phasecurve = phase_board.createElement('curve', [datapred, dataprey], {strokeColor:phasecolor, strokeWidth:'2'});
+    	phasecurve = phase_board.createElement('curve', [dataBox2, dataBox1], {strokeColor:phasecolor, strokeWidth:'2'});
     	phasecurve.updateDataArray = function() {
     	    var data = ode();
             this.dataX = [];
@@ -243,14 +236,14 @@ var boxModel = {
             }
     	}
 
-    	var FixedPoint = phase_board.create('point',[function(){return tangle.getValue("Yinf")},function(){return tangle.getValue("Xinf")}], {name:'', size:2, color: phasecolor});
-
-    	var Xp1 = phase_board.create('point',[0,function(){return FixedPoint.Y();}], {size:-1, name: 'X<sup>&#8734;</sup>'});
-    	var Xp2 = phase_board.create('point',[300,function(){return FixedPoint.Y();}], {size:-1, name: ''});
-    	var Xsteadyline = phase_board.create('line',[Xp1,Xp2], {straightFirst:false, straightLast:false, strokeWidth:2, color: box1color});
-    	var Yp1 = phase_board.create('point',[function(){return FixedPoint.X();},0], {size:-1, name: 'Y<sup>&#8734;</sup>'});
-    	var Yp2 = phase_board.create('point',[function(){return FixedPoint.X();},300], {size:-1, name: ''});
-    	var Ysteadyline = phase_board.create('line',[Yp1,Yp2], {straightFirst:false, straightLast:false, strokeWidth:2, color: box2color});
+        // var FixedPoint = phase_board.create('point',[function(){return tangle.getValue("Yinf")},function(){return tangle.getValue("Xinf")}], {name:'', size:2, color: phasecolor});
+        // 
+        // var Xp1 = phase_board.create('point',[0,function(){return FixedPoint.Y();}], {size:-1, name: 'X<sup>&#8734;</sup>'});
+        // var Xp2 = phase_board.create('point',[300,function(){return FixedPoint.Y();}], {size:-1, name: ''});
+        // var Xsteadyline = phase_board.create('line',[Xp1,Xp2], {straightFirst:false, straightLast:false, strokeWidth:2, color: box1color});
+        // var Yp1 = phase_board.create('point',[function(){return FixedPoint.X();},0], {size:-1, name: 'Y<sup>&#8734;</sup>'});
+        // var Yp2 = phase_board.create('point',[function(){return FixedPoint.X();},300], {size:-1, name: ''});
+        // var Ysteadyline = phase_board.create('line',[Yp1,Yp2], {straightFirst:false, straightLast:false, strokeWidth:2, color: box2color});
         
     },
     
