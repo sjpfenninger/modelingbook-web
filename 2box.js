@@ -8,12 +8,12 @@ var boxModel = {
             resize: function(event, ui) {boxModel.updateBoxSize()}, 
             autoHide: true,
             grid: [20, 20],
-            containment: '#'+boxModel.config.workspaceID,
+            containment: 'parent',
             minHeight: 100,
             minWidth: 100,
         });
         jsPlumb.draggable($('.modelbox'));
-        $('.modelbox').draggable("option", {"containment":'#'+boxModel.config.workspaceID, "cursor":'hand', "opacity":'0.5', });
+        $('.modelbox').draggable("option", {"containment":'parent', "cursor":'hand', "opacity":'0.5', });
         jsPlumb.Defaults.LabelStyle = { font: " ", color: " " }; // Set these to " " so that jsPlumb doesn't mess up CSS styles
         var common = {
         	endpoint:"Blank",
@@ -40,13 +40,6 @@ var boxModel = {
             		[ "Label", { id: 'label', label:'<span data-var="box2to1" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span> <em>M</em><sub>2</sub>', location:0.55, cssClass:"connectorlabel label_box2_box1"} ]
             	],
         }, common);
-        firstboxresize = true;
-    	$('.modelbox').bind( "resize", function(event, ui) {
-    	    if (firstboxresize) {
-                $('#modelbox2').css("top","70px");
-            }
-            firstboxresize = false;
-        });
         // MathJax.Hub.Queue(["Typeset",MathJax.Hub]); // Make sure MathJax catches stuff in any added labels
         MathJax.Hub.Config({
           menuSettings: {
