@@ -1,51 +1,55 @@
-// Fonts
-
-/* none so far */
-
-// Colors
+/* Colors */
 @bodytext: #000000;
 @title1: #3b7bf2;
 @title2: #072a6b;
 @links: #5288AC;
 @slider: #46f;
 @boxbackground: #bbc7ff;
-@boxborder: #113cff;
+@boxborder: #8789DC;
 @boxborder_soft: #727272;
 
-// The whole rest
-body { 
-	font-size: 15px;
-	line-height: 23px;
-	background: url("images/white_texture.png") repeat scroll 0% 0% transparent;
-	font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
-	color: @bodytext;
+/* Override some defaults */
+html, body {
+    // background: #eee url("images/bgnoise.gif") repeat scroll 0% 0%;
+    background-color: #ffffff;
+    color: @bodytext;
+}
+body {
+    padding-top: 60px; /* 40px to make the container go all the way to the bottom of the topbar */
 }
 
-article {
-	max-width: 850px; 
-	margin: auto;
+.topbar-inner, .topbar .fill {
+    // background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
 }
 
-h1, h2, h3 {
+.container > footer p {
+    text-align: center; /* center align it with the container */
+}
+.container {
+    // width: 820px; /* downsize our container to make the content feel a bit tighter and more cohesive. NOTE: this removes two full columns from the grid, meaning you only go to 14 columns and not 16. */
 }
 
-h1 {
-	font-size: 64px;
-	line-height: 69px;
-	margin-top: 23px;
-	margin-bottom: 46px;
-}
+/* The white background content wrapper */
+// .content {
+//   background-color: #fff;
+//   padding: 20px;
+//   margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
+//   -webkit-border-radius: 0 0 6px 6px;
+//      -moz-border-radius: 0 0 6px 6px;
+//           border-radius: 0 0 6px 6px;
+//   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+//      -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+//           box-shadow: 0 1px 2px rgba(0,0,0,.15);
+// }
 
-h2 { font-size: 39px; line-height: 46px; margin-top: 46px; margin-bottom: 23px; }
+/* Page header tweaks */
+// .page-header {
+//   background-color: #f5f5f5;
+//   padding: 20px 20px 10px;
+//   margin: -20px -20px 20px;
+// }
 
-h3 { font-size: 24px; line-height: 46px; margin-top: 23px; margin-bottom: 0px; }
-
-p, ul, .examplespace p + p {
-	margin-top: 0px;
-	margin-bottom: 23px;
-}
-
-small, aside { font-size: 10px; }
+/* The whole rest */
 
 .sans {font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;}
 
@@ -61,6 +65,12 @@ small, aside { font-size: 10px; }
 	font-size: 14px;
 }
 
+.workspace {
+    border: 1px solid #BED5E5;
+    background: url("images/subtle_freckles.png") repeat scroll 0% 0% transparent;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
+}
+
 .equationspace {
 	padding-top: 0;
 	padding-bottom: 0;
@@ -73,19 +83,6 @@ small, aside { font-size: 10px; }
 
 #title2 {
 	color: @title2;
-}
-
-a {
-	color: @links;
-	text-decoration: none;
-}
-	
-a:hover {
-	text-decoration: underline;
-}
-
-ul {
-	padding-left: 20px;
 }
 
 .var_inactive {
@@ -152,7 +149,10 @@ ul {
 .modelbox {
     position: relative;
     background: @boxbackground;
+    background-image: -moz-linear-gradient(center top , #F5F5F5, @boxbackground);
+    background-repeat: repeat-x;
     border: 1px solid @boxborder;
+    box-shadow: 0 1px 0 #FFFFFF inset;
     padding: 5px;
     // font-size: 0.9em;
     // font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
@@ -160,7 +160,8 @@ ul {
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 	cursor: move;
-	box-shadow: 2px 2px 19px #AAAAAA;
+    // box-shadow: 2px 2px 19px #AAAAAA;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.075);
 	z-index: 10;
 	min-height: 100px;
 	min-width: 100px;
@@ -213,7 +214,7 @@ ul {
     bottom: 6px;
     right: 0;
     width: 60px;
-    padding: 10px 5px 10px 24px;
+    padding: 15px 5px 10px 24px;
     background-repeat: no-repeat;
     background-position: 4px 0, 0 bottom;
 }
