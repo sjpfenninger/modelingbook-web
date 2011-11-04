@@ -2,7 +2,7 @@ html,body{background-color:#ffffff;color:#000000;}
 body{padding-top:60px;}
 .container>footer p{text-align:center;}
 .sans{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;}
-.examplespace{font-family:Georgia, Times, serif;background:url("images/t-80.png") repeat scroll 0% 0% transparent;padding:23px;margin-bottom:23px;border:1px solid #E5E5E5;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;font-size:14px;}
+.examplespace{font-family:Georgia, Times, serif;background:url("images/t-80.png") repeat scroll 0% 0% transparent;padding:20px;margin-bottom:20px;border:1px solid #E5E5E5;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;font-size:14px;}
 .workspace{border:1px solid #BED5E5;background:url("images/subtle_freckles.png") repeat scroll 0% 0% transparent;box-shadow:0 1px 2px rgba(0, 0, 0, 0.075);}
 .equationspace{padding-top:0;padding-bottom:0;}
 #title1{color:#3b7bf2;font-weight:normal;}
@@ -15,7 +15,7 @@ body{padding-top:60px;}
 .toggle-1-on{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#000000;padding:0px 8px 0px 12px;-moz-border-radius-topleft:0.5em;-moz-border-radius-bottomleft:0.5em;-webkit-border-top-left-radius:0.5em;-webkit-border-bottom-left-radius:0.5em;border:1px solid #aaa;background-color:#ddd;display:inline;}
 .toggle-2-off{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#4466ff;padding:0px 12px 0px 8px;-moz-border-radius-topright:0.5em;-moz-border-radius-bottomright:0.5em;-webkit-border-top-right-radius:0.5em;-webkit-border-bottom-right-radius:0.5em;border:1px solid #aaa;border-left:none;background-color:#fff;display:inline;}
 #modelboxcontainer{height:300px;}
-.modelbox{position:relative;background:#bbc7ff;background-image:-moz-linear-gradient(center top, #f5f5f5, #bbc7ff);background-repeat:repeat-x;border:1px solid #8789dc;box-shadow:0 1px 0 #FFFFFF inset;padding:5px;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;cursor:move;box-shadow:0px 2px 2px rgba(0, 0, 0, 0.075);z-index:10;min-height:100px;min-width:100px;}
+.modelbox{position:relative;background:#bbc7ff;background-image:-moz-linear-gradient(center top, #f5f5f5, #bbc7ff);background-repeat:repeat-x;border:1px solid #8789dc;box-shadow:0 1px 0 #FFFFFF inset;padding:5px;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;cursor:move;box-shadow:0px 2px 2px rgba(0, 0, 0, 0.075);z-index:10;}
 .TKAdjustableNumber{cursor:col-resize;}
 #modelbox1{width:180px;height:120px;left:130px;top:70px;}
 #modelbox2{width:140px;height:120px;left:490px;top:-62px;}

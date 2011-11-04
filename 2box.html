@@ -37,7 +37,6 @@
     <script>
 	$(document).ready(function(){
 		boxModel.init();
-		boxModel.setupTangle();
 	});
     </script>
    
@@ -64,7 +63,7 @@
             </div>
             <div class="row">
                 <div class="span16">
-                    <p>Each of the parameters <span class="TKAdjustableNumber">marked like this</span> below can be changed (they become <span class="var_inactivedemo">grey</span> when they are zero).</p>
+                    <!-- <p>Each of the parameters <span class="TKAdjustableNumber">marked like this</span> below can be changed (they become <span class="var_inactivedemo">grey</span> when they are zero).</p> -->
                     <div class="examplespace workspace" id="modelboxcontainer">
                         <div class="modelbox" id="modelbox1">
         	                <span class="boxname"><em>M</em><sub>1</sub><br /></span>
@@ -78,6 +77,15 @@
         	                <span class="boxinput"><span data-var="box2in" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span> ducks/sec</span>
         	                <span class="boxoutput"><span data-var="box2out" class="TKAdjustableNumber inputField" data-min="-1" data-max="1" data-step="0.01" data-format="%.2f"></span> <em>M</em><sub>2</sub></span>
                         </div>
+                    </div>
+                    <div class="examplespace" id="graphcontainer">
+                        <div style ="width: 500px; float: left; margin-right: 20px">
+    						<div class="jsxbox" id="solution_board" style="height:300px;"></div>
+    					</div>
+    					<div style ="width: 300px; float: left;">
+    						<div class="jsxbox" id="phase_board" style="height:300px;"></div>
+    					</div>
+    					<div style="clear:both;"></div>
                     </div>
                     <h2>The formal equations</h2>
                     <p>This is a general 2-box model:</p>

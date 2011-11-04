@@ -4,10 +4,16 @@ var boxModel = {
     },
     
     'init' : function() {
-        $('.modelbox')
-            .resizable({ resize: function(event, ui) {boxModel.updateBoxSize()}, autoHide: true, grid: [20, 20] });
+        $('.modelbox').resizable({ 
+            resize: function(event, ui) {boxModel.updateBoxSize()}, 
+            autoHide: true,
+            grid: [20, 20],
+            containment: '#'+boxModel.config.workspaceID,
+            minHeight: 100,
+            minWidth: 100,
+        });
         jsPlumb.draggable($('.modelbox'));
-        $('.modelbox').draggable("option", {"containment":'parent', "cursor":'hand', "opacity":'0.5', });
+        $('.modelbox').draggable("option", {"containment":'#'+boxModel.config.workspaceID, "cursor":'hand', "opacity":'0.5', });
         jsPlumb.Defaults.LabelStyle = { font: " ", color: " " }; // Set these to " " so that jsPlumb doesn't mess up CSS styles
         var common = {
         	endpoint:"Blank",
@@ -47,6 +53,9 @@ var boxModel = {
             context: "browser",
           }
         });
+        
+        tangle = boxModel.setupTangle();
+        boxModel.setupBoards(tangle);
     },
     
     'setupTangle' : function() {
@@ -73,9 +82,183 @@ var boxModel = {
                 boxModel.updateUI();
             },
         });
-    	boxModel.updateUI();
+        boxModel.updateUI();
     	tangleInitialized = true;
     	return tangle;
+    },
+    
+    // 'createModelBox' : function() {
+    //     // TODO add an actual box to the DOM, return its ID as var boxNumber
+    //     var modelBox = {
+    //      'initialized' : false
+    //      'number' : //todo
+    //  }
+    //     var parentBox = modelBox;
+    //  var element = document.getElementById(boxModel.config.workspaceID);
+    //     var tangle = new Tangle(element, {
+    //         initialize: function () {
+    //             this.boxin = 0;
+    //             this.boxout = 0;
+    //          this.boxsize = boxModel.getBoxSize(boxNumber);
+    //         },
+    //         update: function () {
+    //          if (parentBox.initialized) {
+    //                 // nothing in here right now
+    //          }
+    //             // Set variables greyed or non-greyed
+    //             boxModel.updateUI();
+    //         },
+    //     });
+    //     // add this box to the list/array/whatever of boxes
+    //  boxModel.updateUI(); // TODO updateUI() must update everything according to the list of boxes
+    //  modelBox.initialized = true;
+    //  modelBox.tangle = tangle;
+    //  return modelBox;
+    // },
+    
+    'setupBoards' : function(tangle) {
+        // Set up the drawing boards
+    	JXG.Options = JXG.deepCopy(JXG.Options, {
+    	    showNavigation: false,
+    		showCopyright: false,
+    		axis: {
+    			lastArrow: false,
+    		}
+    	});
+    	
+    	solution_board = JXG.JSXGraph.initBoard('solution_board', {boundingbox: [-1.5, 302.5, 77.5, -20.5], axis: true, grid: false});
+    	JXG.Options.axis.ticks.drawLabels = false; // disable labels before drawing phase board
+    	phase_board = JXG.JSXGraph.initBoard('phase_board', {boundingbox: [-1.5, 302.5, 302.5, -20.5], axis: true, grid: false});
+    	solution_board.addChild(phase_board);
+
+    	// Disable mouse wheel scrolling
+    	JXG.removeEvent(solution_board.containerObj, 'mousewheel', solution_board.mouseWheelListener,
+    	solution_board);
+    	JXG.removeEvent(solution_board.containerObj, 'DOMMouseScroll',
+    	solution_board.mouseWheelListener, solution_board);
+    	JXG.removeEvent(phase_board.containerObj, 'mousewheel', phase_board.mouseWheelListener,
+    	phase_board);
+    	JXG.removeEvent(phase_board.containerObj, 'DOMMouseScroll',
+    	phase_board.mouseWheelListener, phase_board);
+
+    	// Set colors
+    	var box1color = '#91BFDB'
+    	var box2color = '#FC8D59'
+    	var phasecolor = '#31A354'
+
+        // Dynamic initial value as gliders on the y-axis
+        startprey = solution_board.createElement('glider', [0, 50, solution_board.defaultAxes.y], {name:'<em>M<sub>1</sub></em>',strokeColor:box1color,fillColor:box1color});
+    	startpred = solution_board.createElement('glider', [0, 30, solution_board.defaultAxes.y], {name:'<em>M<sub>2</sub></em>',strokeColor:box2color,fillColor:box2color});
+    	solution_board.addHook(function() {
+    		tangle.setValue("X0", startprey.Y());
+    		tangle.setValue("Y0", startpred.Y());
+    	});
+
+    	// Variables for the JXG.Curves
+        var preycurve = null;
+        var predcurve = null;
+    	var phasecurve = null;
+
+
+        // Initialise ODE and solve it with JXG.Math.Numerics.rungeKutta()
+        function ode() {
+            // evaluation interval
+            var I = [0, 75];
+            // Number of steps. 1000 should be enough
+            var N = 1000;
+
+    		var k1 = tangle.getValue("k1");
+            var k2 = tangle.getValue("k2");
+            var k3 = tangle.getValue("k3");
+            var alpha = tangle.getValue("alpha");
+    		var k4 = tangle.getValue("k4");
+
+            // Right hand side of the ODE dx/dt = f(t, x)
+            var f = function(t, x) {
+                var y = [];
+                y[0] = k1*x[0] - k3*x[0]*x[1] -k4*x[0]*x[0];
+                y[1] = -k2*x[1] + alpha*k3*x[0]*x[1];
+
+                return y;
+            }
+
+            // Initial value
+            var x0 = [startprey.Y(), startpred.Y()];
+
+            // Solve ode
+            var data = JXG.Math.Numerics.rungeKutta('heun', x0, I, N, f);
+
+            // to plot the data against time we need the times where the equations were solved
+            var t = [];
+            var q = I[0];
+            var h = (I[1]-I[0])/N;
+            for(var i=0; i<data.length; i++) {
+                data[i].push(q);
+                q += h;
+            }
+
+            return data;
+        }
+
+        // get data points
+        var data = ode();
+
+        // copy data to arrays so we can plot it using JXG.Curve
+        var t = [];
+        var dataprey = [];
+        var datapred = [];
+        for(var i=0; i<data.length; i++) {
+            t[i] = data[i][2];
+            dataprey[i] = data[i][0];
+            datapred[i] = data[i][1];
+        }
+
+    	// Plot prey
+        preycurve = solution_board.createElement('curve', [t, dataprey], {strokeColor:box1color, strokeWidth:'2'});
+        preycurve.updateDataArray = function() {
+            var data = ode();
+            this.dataX = [];
+            this.dataY = [];
+            for(var i=0; i<data.length; i++) {
+                this.dataX[i] = t[i];
+                this.dataY[i] = data[i][0];
+            }
+        }
+
+        // Plot predators
+        predcurve = solution_board.createElement('curve', [t, datapred], {strokeColor:box2color, strokeWidth:'2'});
+        predcurve.updateDataArray = function() {
+            var data = ode();
+            this.dataX = [];
+            this.dataY = [];
+            for(var i=0; i<data.length; i++) {
+                this.dataX[i] = t[i];
+                this.dataY[i] = data[i][1];
+            }
+        }
+
+    	// Plot phase space with steady states
+
+    	phasecurve = phase_board.createElement('curve', [datapred, dataprey], {strokeColor:phasecolor, strokeWidth:'2'});
+    	phasecurve.updateDataArray = function() {
+    	    var data = ode();
+            this.dataX = [];
+            this.dataY = [];
+            for(var i=0; i<data.length; i++) {
+                this.dataY[i] = data[i][0];
+                this.dataX[i] = data[i][1];
+            }
+    	}
+
+    	var FixedPoint = phase_board.create('point',[function(){return tangle.getValue("Yinf")},function(){return tangle.getValue("Xinf")}], {name:'', size:2, color: phasecolor});
+
+    	var Xp1 = phase_board.create('point',[0,function(){return FixedPoint.Y();}], {size:-1, name: 'X<sup>&#8734;</sup>'});
+    	var Xp2 = phase_board.create('point',[300,function(){return FixedPoint.Y();}], {size:-1, name: ''});
+    	var Xsteadyline = phase_board.create('line',[Xp1,Xp2], {straightFirst:false, straightLast:false, strokeWidth:2, color: box1color});
+    	var Yp1 = phase_board.create('point',[function(){return FixedPoint.X();},0], {size:-1, name: 'Y<sup>&#8734;</sup>'});
+    	var Yp2 = phase_board.create('point',[function(){return FixedPoint.X();},300], {size:-1, name: ''});
+    	var Ysteadyline = phase_board.create('line',[Yp1,Yp2], {straightFirst:false, straightLast:false, strokeWidth:2, color: box2color});
+        
     },
     
     'updateUI' : function() {
