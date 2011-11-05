@@ -1,5 +1,7 @@
-html,body{background-color:#ffffff;color:#000000;}
+html,body{background:#eeeeee url("images/noise.png") repeat scroll 0% 0%;color:#000000;}
 body{padding-top:60px;}
+.topbar-inner,.topbar .fill{background:transparent url("images/topbar.png") repeat scroll 0 0;}
+.topbar a.brand{padding:0 10px 0 0;}.topbar a.brand img{padding-top:4px;padding-bottom:2px;}
 .container>footer p{text-align:center;}
 .sans{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;}
 .examplespace{font-family:Georgia, Times, serif;background:url("images/t-80.png") repeat scroll 0% 0% transparent;padding:20px;margin-bottom:20px;border:1px solid #E5E5E5;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;font-size:14px;}
