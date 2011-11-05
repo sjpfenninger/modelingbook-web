@@ -1,0 +1,56 @@
+pageTitle: 'Two-box Model'
+linkTitle: 'Two-Box'
+---------------------------------------------META
+<script>
+$(document).ready(function(){
+	boxModel.init();
+	$('#topbar').dropdown();
+});
+</script>
+<script src="js/2box.js"></script>
+   
+<div class="content">
+    <div class="page-header">
+        <h1>Linear two-box model</h1>
+    </div>
+    <div class="row">
+        <div class="span16">
+            <div class="examplespace workspace" id="modelboxcontainer">
+                <div class="modelbox" id="modelbox1">
+	                <p><span class="boxname"><em>M</em><sub>1</sub></span></p>
+	                <p><span class="boxsize">Size: <span data-var="box1size"></span> ducks</span></p>
+	                <p><span class="boxstart">Initial: <span data-var="box1start" class="TKAdjustableNumber inputField" data-min="0" data-max="200" data-step="1" data-format="%.0f"></span></span></p>
+	                <span class="boxinput"><span data-var="box1in" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span> ducks/sec</span>
+	                <span class="boxoutput"><span data-var="box1out" class="TKAdjustableNumber inputField" data-min="-1" data-max="1" data-step="0.01" data-format="%.2f"></span> <em>M</em><sub>1</sub></span>
+                </div>
+                <div class="modelbox" id="modelbox2">
+	                <p><span class="boxname"><em>M</em><sub>2</sub></span></p>
+	                <p><span class="boxsize">Size: <span data-var="box2size"></span> ducks</span></p>
+	                <p><span class="boxstart">Initial: <span data-var="box2start" class="TKAdjustableNumber inputField" data-min="0" data-max="200" data-step="1" data-format="%.0f"></span></span></p>
+	                <span class="boxinput"><span data-var="box2in" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span> ducks/sec</span>
+	                <span class="boxoutput"><span data-var="box2out" class="TKAdjustableNumber inputField" data-min="-1" data-max="1" data-step="0.01" data-format="%.2f"></span> <em>M</em><sub>2</sub></span>
+                </div>
+            </div>
+            <div class="examplespace" id="graphcontainer">
+                <div style ="width: 500px; float: left; margin-right: 20px">
+					<div class="jsxbox" id="solution_board" style="height:300px;"></div>
+				</div>
+				<div style ="width: 300px; float: left;">
+					<div class="jsxbox" id="phase_board" style="height:300px;"></div>
+				</div>
+				<div style="clear:both;"></div>
+            </div>
+            <h2>The formal equations</h2>
+            <div class="examplespace equationspace">
+                <div style="float: left; width: 400px; padding-top: 26px">
+                    $$\begin{align}
+                    \frac{\mathrm{d} M_1}{\mathrm{d} t} = J_1-(k_1 + k_3)M_1 + k_2M_2\\
+                    \frac{\mathrm{d} M_2}{\mathrm{d} t} = J_2 + k_1 M_1 - (k_2 + k_4)M_2
+                    \end{align}$$
+                </div>
+                <img src="images/2box.png" width="252" height="162" alt="2box">
+            </div>
+        </div>
+    </div>
+</div>
+
