@@ -1,11 +1,18 @@
 <%= 
-def isNavActive(thisNav,passedNav)
-    if thisNav == passedNav
-        return "active"
+def displayNavItem(navTitle, navURL, current_path)
+    if current_path == '/'
+        current_path = '/index'
     end
+    navURL = '/'+navURL
+    if navURL == current_path or navURL == current_path+'.html'
+        active = 'active'
+    else
+        active = ''
+    end
+    return "<li class='"+active+"'><a href='"+navURL+"'>"+navTitle+"</a></li>"
 end
 
-def title(pageTitle)
+def displayTitle(pageTitle)
     if pageTitle != nil
         title = 'Intro to Systems Modeling &raquo; ' + pageTitle 
     else
@@ -19,7 +26,7 @@ end
 <html lang='en'>
   <head>
     <meta charset='utf-8'>
-    <title><%= title(pageTitle) %></title>
+    <title><%= displayTitle(pageTitle) %></title>
     <link rel='shortcut icon' href='favicon.ico'>
     <!--[if lt IE 9]>
       <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
@@ -52,25 +59,17 @@ end
           <img alt='Logo' src='images/toplogo.png' />
         </a>
         <ul class='nav'>
-          <li class='<%= isNavActive('home',navName) %>'>
-            <a href='index.html'>Home</a>
-          </li>
+          <%= displayNavItem('Home', 'index.html', current_path) %>
           <li class='dropdown' data-dropdown='dropdown'>
             <a class='dropdown-toggle'>Example models</a>
             <ul class='dropdown-menu'>
-              <li class='<%= isNavActive('models/lotka',navName) %>'>
-                <a href='predprey.html'>Lotka-Volterra</a>
-              </li>
-              <li class='<%= isNavActive('models/two-box',navName) %>'>
-                <a href='2box.html'>Two-box</a>
-              </li>
+              <%= displayNavItem('Lotka-Volterra', 'predprey.html', current_path) %>
+              <%= displayNavItem('Two-Box', '2box.html', current_path) %>
             </ul>
           </li>
         </ul>
         <ul class='nav secondary-nav'>
-          <li class='<%= isNavActive('help',navName) %>'>
-            <a href='help.html'>Help</a>
-          </li>
+          <%= displayNavItem('Help', 'help.html', current_path) %>
         </ul>
       </div>
     </div>
