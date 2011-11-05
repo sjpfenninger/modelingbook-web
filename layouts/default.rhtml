@@ -1,0 +1,82 @@
+<%= 
+def isNavActive(thisNav,passedNav)
+    if thisNav == passedNav
+        return "active"
+    end
+end
+
+def title(pageTitle)
+    if pageTitle != nil
+        title = 'Intro to Systems Modeling &raquo; ' + pageTitle 
+    else
+        title = 'Intro to Systems Modeling'
+    end
+    return title
+end
+
+ %>
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <title><%= title(pageTitle) %></title>
+    <link rel='shortcut icon' href='favicon.ico'>
+    <!--[if lt IE 9]>
+      <script src='http://html5shim.googlecode.com/svn/trunk/html5.js'></script>
+    <![endif]-->
+    <link rel='stylesheet' href='libraries/bootstrap.css'>
+    <link rel='stylesheet' href='/style.css'>
+    <script src='/libraries/jquery-1.7.min.js'></script>
+    <script src='/libraries/jqueryui.min.js'></script>
+    <script src='/libraries/bootstrap-dropdown.js'></script>
+    <!-- Tangle -->
+    <script src="libraries/Tangle.js"></script>
+    <link rel="stylesheet" href="libraries/TangleKit/TangleKit.css">
+    <script src="libraries/TangleKit/mootools.js"></script>
+    <script src="libraries/TangleKit/sprintf.js"></script>
+    <script src="libraries/TangleKit/BVTouchable.js"></script>
+    <script src="libraries/TangleKit/TangleKit.js"></script>
+    <!-- jsPlumb -->
+    <script src="libraries/jquery.jsPlumb-1.3.3-all.js "></script>
+    <!-- JSX -->
+    <link rel="stylesheet" href="libraries/jsxgraph.css">
+    <script src="libraries/jsxgraphcore.js "></script>
+    <!-- MathJax -->
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  </head>
+  <body>
+  <div class='topbar'>
+    <div class='fill'>
+      <div class='container'>
+        <a class='brand' href='index.html'>
+          <img alt='Logo' src='images/toplogo.png' />
+        </a>
+        <ul class='nav'>
+          <li class='<%= isNavActive('home',navName) %>'>
+            <a href='index.html'>Home</a>
+          </li>
+          <li class='dropdown' data-dropdown='dropdown'>
+            <a class='dropdown-toggle'>Example models</a>
+            <ul class='dropdown-menu'>
+              <li class='<%= isNavActive('models/lotka',navName) %>'>
+                <a href='predprey.html'>Lotka-Volterra</a>
+              </li>
+              <li class='<%= isNavActive('models/two-box',navName) %>'>
+                <a href='2box.html'>Two-box</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class='nav secondary-nav'>
+          <li class='<%= isNavActive('help',navName) %>'>
+            <a href='help.html'>Help</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class='container'>
+      <%= yield %>
+    </div>
+  </body>
+</html>
