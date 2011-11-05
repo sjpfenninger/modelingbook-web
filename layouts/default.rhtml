@@ -5,11 +5,11 @@ def displayNavItem(navTitle, navURL, current_path)
     end
     navURL = '/'+navURL
     if navURL == current_path or navURL == current_path+'.html'
-        active = 'active'
+        active = " class='active'"
     else
         active = ''
     end
-    return "<li class='"+active+"'><a href='"+navURL+"'>"+navTitle+"</a></li>"
+    return "<li"+active+"><a href='"+navURL+"'>"+navTitle+"</a></li>"
 end
 
 def displayTitle(pageTitle)
@@ -76,6 +76,7 @@ end
   </div>
     <div class='container'>
       <%= yield %>
+      <%= refresh %>
     </div>
   </body>
 </html>
