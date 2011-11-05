@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Interactive Models</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="libraries/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="libraries/TangleKit/TangleKit.css">
+    
+    <script src="libraries/jquery-1.7.min.js"></script>
+    <script src="libraries/jqueryui.min.js"></script>
+    <script src="libraries/bootstrap-dropdown.js"></script>
+</head>
+
+<body>
+    <script>
+	$(document).ready(function(){
+		$('#topbar').dropdown();
+	});
+    </script>
+    
+    <div class="topbar">
+        <div class="fill">
+            <div class="container">
+                <a class="brand" href="index.html">Systems modeling intro</a>
+                <ul class="nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown" data-dropdown="dropdown">
+                        <a class="dropdown-toggle" href="#">Example models</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="predprey.html">Lotka-Volterra</a></li>
+                            <li><a href="2box.html">Two-box</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav secondary-nav">
+                    <li class="active"><a href="help.html">Help</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="content">
+            <div class="page-header">
+                <h1>Help <small>How to use the example models</small></h1>
+            </div>
+            <div class="row">
+                <div class="span16">
+                    <p>Each of the parameters <span class="TKAdjustableNumber">marked like this</span> can be changed. Simply click and drag them.</p>
+                    <p>You will immediately see the effect on the steady states, the population development over time, and the phase space.</p>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+</body>
+</html>

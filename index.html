@@ -9,20 +9,35 @@
     <![endif]-->
     <link rel="stylesheet" href="libraries/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    
+    <script src="libraries/jquery-1.7.min.js"></script>
+    <script src="libraries/jqueryui.min.js"></script>
+    <script src="libraries/bootstrap-dropdown.js"></script>
 </head>
 
-<body>   
+<body>
+    <script>
+	$(document).ready(function(){
+		$('#topbar').dropdown();
+	});
+    </script>
+     
     <div class="topbar">
         <div class="fill">
             <div class="container">
                 <a class="brand" href="index.html">Systems modeling intro</a>
                 <ul class="nav">
-                    <!-- <li class="active"><a href="#">Home</a></li> -->
-                    <!-- <li><a href="#">About</a></li> -->
-                    <!-- <li><a href="#">Contact</a></li> -->
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li class="dropdown" data-dropdown="dropdown">
+                        <a class="dropdown-toggle" href="#">Example models</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="predprey.html">Lotka-Volterra</a></li>
+                            <li><a href="2box.html">Two-box</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <ul class="nav secondary-nav">
-                    <!-- <li><a href="">Help</a></li> -->
+<li><a href="help.html">Help</a></li>
                 </ul>
             </div>
         </div>
@@ -30,20 +45,36 @@
     <div class="container">
         <div class="content">
             <div class="page-header">
-                <h1>Interactive Models <small>DRAFT - do not publicize</small></h1>
+                <h1>Interactive Models</h1>
             </div>
             <div class="row">
                 <div class="span16">
+                    <div class="alert-message block-message warning">
+                        <p>These pages are in an early draft status. The model examples are early alpha versions and may not work correctly. See the <a href="help.html">help page</a> for some brief info on how to use the examples.</p>
+                        <div class="alert-actions">
+                            <a href="mailto:stefan@pfenninger.org" class="btn small">Send feedback email</a>
+                        </div>
+                    </div>
     				<p>Existing examples so far:</p>
     				<ul>
     				    <li><a href="predprey.html">Lotka-Volterra model</a></li>
     				    <li><a href="2box.html">Two-box model</a></li>
     				</ul>
+    				<h2>About</h2>
+    				<p>The following libraries and resources are used:</p>
+    				<ul>
+    				    <li><a href="http://jsxgraph.uni-bayreuth.de/">JSXGraph</a> for calculations and graphing</li>
+    				    <li><a href="http://worrydream.com/Tangle/">Tangle</a> for interactive adjustment of the parameters</li>
+    				    <li><a href="http://www.mathjax.org/">MathJax</a> for math rendering</li>
+    				    <li><a href="http://jsplumb.org/">jsPlumb</a> to render box connections</li>
+    				    <li>CSS is based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a></li>
+    				    <li>Artwork from the <a href="http://thenounproject.com/">Noun Project</a></li>
+    				</ul>
     			</div>
     		</div>
     	</div>
         <footer>
-            <p><small>Created by <a href="http://pfenninger.org/">Stefan Pfenninger</a>. The following libraries and resources are used: <a href="http://jsxgraph.uni-bayreuth.de/">JSXGraph</a> for calculations and graphing, <a href="http://worrydream.com/Tangle/">Tangle</a> for interactive adjustment of the parameters, and <a href="http://www.mathjax.org/">MathJax</a> for math rendering. Box connections are rendered with <a href="http://jsplumb.org/">jsPlumb</a>. The CSS is based on <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>. Some artwork from <a href="http://thenounproject.com/">the Noun Project</a>. The code for graphing the Lotka-Volterra equations is based on the <a href="http://jsxgraph.uni-bayreuth.de/wiki/index.php/Lotka-Volterra_equations">JSXGraph Lotka-Volterra example</a>.</small></p>
+            <p><small>Created by <a href="http://pfenninger.org/">Stefan Pfenninger</a>.</small></p>
         </footer>
     </div>
 </body>
