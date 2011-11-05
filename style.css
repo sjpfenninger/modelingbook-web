@@ -1,6 +1,5 @@
 html,body{background:#eeeeee url("images/noise.png") repeat scroll 0% 0%;color:#000000;}
 body{padding-top:60px;}
-.topbar-inner,.topbar .fill{background:transparent url("images/topbar.png") repeat scroll 0 0;}
 .topbar a.brand{padding:0 10px 0 0;}.topbar a.brand img{padding-top:4px;padding-bottom:2px;}
 .container>footer p{text-align:center;}
 .sans{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;}
@@ -9,6 +8,7 @@ body{padding-top:60px;}
 .equationspace{padding-top:0;padding-bottom:0;}
 #title1{color:#3b7bf2;font-weight:normal;}
 #title2{color:#072a6b;}
+.imgbox{border:1px solid #E5E5E5;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;padding:5px;background-color:#ffffff;}
 .var_inactive{color:#D5D5D5;}.var_inactive .TKAdjustableNumber{color:#D5D5D5;border-bottom:1px dashed #D5D5D5;}
 .var_inactivedemo{color:#878787;border-bottom:1px dashed #878787;}
 .modelbox .var_inactive{color:#99A6D3;}.modelbox .var_inactive .TKAdjustableNumber{color:#99A6D3;border-bottom:1px dashed #99A6D3;}
