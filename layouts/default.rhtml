@@ -3,7 +3,7 @@ def displayNavItem(navTitle, navURL, current_path)
     if current_path == '/'
         current_path = '/index'
     end
-    if '/'+navURL == current_path or navURL == current_path+'.html'
+    if '/'+navURL == current_path or '/'+navURL == current_path+'.html'
         active = " class='active'"
     else
         active = ''
