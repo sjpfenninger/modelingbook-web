@@ -37,6 +37,11 @@ body {
 
 .topbar div > ul .menu-dropdown li a, .nav .menu-dropdown li a, .topbar div > ul .dropdown-menu li a, .nav .dropdown-menu li a, .topbar a {
     color: @bodytext;
+    text-shadow: none;
+}
+
+.topbar div > ul .active > a, .nav .active > a {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .topbar a.brand {
@@ -53,7 +58,9 @@ body {
 }
 
 .topbar div > ul .menu-dropdown, .nav .menu-dropdown, .topbar div > ul .dropdown-menu, .nav .dropdown-menu {
-    background-color: #E6E6E6;
+    border-top: 1px solid #858585;
+    background-color: #BEBEBE;
+    // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .container {
