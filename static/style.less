@@ -7,6 +7,8 @@
 @boxbackground: #bbc7ff;
 @boxborder: #8789DC;
 @boxborder_soft: #727272;
+@box1color: #91BFDB;
+@box2color: #FC8D59;
 
 /* Override some defaults */
 html, body {
@@ -243,6 +245,9 @@ body {
     height: 120px;
     left: 80px;
     top: 70px;
+    background: lighten(@box1color, 20%);
+    background-image: -moz-linear-gradient(center top , #F5F5F5, lighten(@box1color, 20%));
+    border: 1px solid @box1color;
 }
 
 #modelbox2 {
@@ -250,6 +255,9 @@ body {
     height: 120px;
     left: 420px;
     top: 70px;
+    background: lighten(@box2color, 20%);
+    background-image: -moz-linear-gradient(center top , #F5F5F5, lighten(@box2color, 20%));
+    border: 1px solid @box2color;
 }
 
 .boxname {
