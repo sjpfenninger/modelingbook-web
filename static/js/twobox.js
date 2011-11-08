@@ -71,7 +71,7 @@ var boxModel = {
             },
             update: function () {
     			if (tangleInitialized) {
-                    // nothing in here right now
+                    solution_board.fullUpdate()
     			}
                 // Set variables greyed or non-greyed
     			this.a11 = this.box1to2 + this.box1out;
