@@ -58,16 +58,16 @@ var boxModel = {
     	// and generalize all tangle variables too
         tangle = new Tangle(element, {
             initialize: function () {
-                this.box1in = 0;
+                this.box1in = 5;
                 this.box1out = 0;
     			this.box2in = 0;
-    			this.box2out = 0;
-    			this.box1to2 = 1.0;
-    			this.box2to1 = 0;
+    			this.box2out = 0.1;
+    			this.box1to2 = 0.4;
+    			this.box2to1 = 0.1;
                 // this.box1size = boxModel.getBoxSize(1);
                 // this.box2size = boxModel.getBoxSize(2);
-                this.box1start = boxModel.getBoxSize(1) / 4;
-                this.box2start = boxModel.getBoxSize(2) / 4;
+                this.box1start = boxModel.getBoxSize(1) / 2;
+                this.box2start = boxModel.getBoxSize(2) / 2;
             },
             update: function () {
     			if (tangleInitialized) {
@@ -269,8 +269,8 @@ var boxModel = {
     
     'updateBoxSize' : function() {
         jsPlumb.repaintEverything();
-        tangle.setValue("box1start", boxModel.getBoxSize(1)/4);
-        tangle.setValue("box2start", boxModel.getBoxSize(2)/4);
+        tangle.setValue("box1start", boxModel.getBoxSize(1)/2);
+        tangle.setValue("box2start", boxModel.getBoxSize(2)/2);
     },
     
     'getBoxSize' : function(box) {
