@@ -89,6 +89,20 @@ body {
 
 /* The whole rest */
 
+#dropdown-helpbox {
+    min-width: 500px;
+    border: 1px solid #858585;
+    padding: 10px;
+    p {
+        color: @bodytext;
+        font-size: 0.8em;
+        line-height: 22px ! important;
+    }
+    p + p {
+        margin-top: 6px;
+    }
+}
+
 .sans {font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;}
 
 .examplespace {
@@ -194,6 +208,13 @@ body {
     height: 200px;
 }
 
+#modelbox_equations {
+    width: 200px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
 .modelbox {
     position: absolute ! important; 
     background: @boxbackground;
@@ -220,14 +241,14 @@ body {
 #modelbox1 {
     width: 180px;
     height: 120px;
-    left: 130px;
+    left: 80px;
     top: 70px;
 }
 
 #modelbox2 {
     width: 140px;
     height: 120px;
-    left: 490px;
+    left: 420px;
     top: 70px;
 }
 

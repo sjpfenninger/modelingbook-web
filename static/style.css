@@ -6,6 +6,8 @@ body{padding-top:60px;}
 .topbar a.brand{padding:0 5px 0 5px;margin-left:-10px;}.topbar a.brand img{padding-top:2px;padding-right:10px;}
 .container>footer p{text-align:center;}
 .topbar div>ul .menu-dropdown,.nav .menu-dropdown,.topbar div>ul .dropdown-menu,.nav .dropdown-menu{border-top:1px solid #858585;background-color:#BEBEBE;}
+#dropdown-helpbox{min-width:500px;border:1px solid #858585;padding:10px;}#dropdown-helpbox p{color:#000000;font-size:0.8em;line-height:22px ! important;}
+#dropdown-helpbox p+p{margin-top:6px;}
 .sans{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;}
 .examplespace{font-family:Georgia, Times, serif;background:url("images/t-80.png") repeat scroll 0% 0% transparent;padding:20px;margin-bottom:20px;border:1px solid #E5E5E5;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;font-size:14px;}
 .workspace{border:1px solid #BED5E5;background:url("images/subtle_freckles.png") repeat scroll 0% 0% transparent;box-shadow:0 1px 2px rgba(0, 0, 0, 0.075);position:relative;}
@@ -21,10 +23,11 @@ body{padding-top:60px;}
 .toggle-1-on{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#000000;padding:0px 8px 0px 12px;-moz-border-radius-topleft:0.5em;-moz-border-radius-bottomleft:0.5em;-webkit-border-top-left-radius:0.5em;-webkit-border-bottom-left-radius:0.5em;border:1px solid #aaa;background-color:#ddd;display:inline;}
 .toggle-2-off{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#4466ff;padding:0px 12px 0px 8px;-moz-border-radius-topright:0.5em;-moz-border-radius-bottomright:0.5em;-webkit-border-top-right-radius:0.5em;-webkit-border-bottom-right-radius:0.5em;border:1px solid #aaa;border-left:none;background-color:#fff;display:inline;}
 #modelboxcontainer{height:200px;}
+#modelbox_equations{width:200px;position:absolute;right:10px;bottom:10px;}
 .modelbox{position:absolute ! important;background:#bbc7ff;background-image:-moz-linear-gradient(center top, #f5f5f5, #bbc7ff);background-repeat:repeat-x;border:1px solid #8789dc;box-shadow:0 1px 0 #FFFFFF inset;padding:5px;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;cursor:move;box-shadow:0px 2px 2px rgba(0, 0, 0, 0.075);z-index:10;}
 .TKAdjustableNumber{cursor:col-resize;}
-#modelbox1{width:180px;height:120px;left:130px;top:70px;}
-#modelbox2{width:140px;height:120px;left:490px;top:70px;}
+#modelbox1{width:180px;height:120px;left:80px;top:70px;}
+#modelbox2{width:140px;height:120px;left:420px;top:70px;}
 .boxname{font-weight:bold;}
 .connectorlabel{padding:5px;background:url("images/t-80.png") repeat scroll 0% 0% transparent;z-index:20;}
 .boxinput{position:absolute;top:-38px;left:10px;padding:10px 10px 10px 20px;background:transparent url("images/arrow-down.png") no-repeat scroll 0 bottom;}

@@ -19,20 +19,20 @@ $(document).ready(function(){
 			<div class="examplespace workspace">
 				<div id="predprey_settings">
 					<!-- <div id="toggle">
-						<p><span class="sans"><strong>Input method</strong> <small>(changing this resets the numbers)</small></span><br /><a href="javascript:void(0);" id="toggle-1" class="toggle-1-on">Adjustable numbers</a><a href="javascript:void(0);" id="toggle-2" class="toggle-2-off">Input boxes</a></p>
+						<p><span class="sans"><strong>Input method</strong> <small>(changing this resets the numbers)</small></span><br><a href="javascript:void(0);" id="toggle-1" class="toggle-1-on">Adjustable numbers</a><a href="javascript:void(0);" id="toggle-2" class="toggle-2-off">Input boxes</a></p>
 						<p><br/></p>
-						<p><span class="sans"><strong>Stability</strong></span><br />
-							tr \( =\)<span data-var="trace" data-format="%.3f"></span><br />
+						<p><span class="sans"><strong>Stability</strong></span><br>
+							tr \( =\)<span data-var="trace" data-format="%.3f"></span><br>
 							\(\Delta =\)<span data-var="disc" data-format="%.3f"></span>
 						</p>
 					</div> -->
-					<p><span class="sans"><strong>Dynamic equations</strong></span><br />
-						Prey: \(\eqalign{\frac{\mathrm{d} X}{\mathrm{d} t} =}\) <span data-var="k1" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"> yr<sup>-1</sup></span> \(X - \) <span data-var="k3" class="TKAdjustableNumber inputField" data-min="0" data-max="0.1" data-step="0.001" data-format="%.3f"> yr<sup>-1</sup></span> \(XY\)<span id="k4_container">\(-\)<span data-var="k4" class="TKAdjustableNumber inputField" data-min="0" data-max="0.01" data-step="0.0001" data-format="%.4f"> yr<sup>-1</sup></span> \(X^2\)</span><br />
+					<p><span class="sans"><strong>Dynamic equations</strong></span><br>
+						Prey: \(\eqalign{\frac{\mathrm{d} X}{\mathrm{d} t} =}\) <span data-var="k1" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"> yr<sup>-1</sup></span> \(X - \) <span data-var="k3" class="TKAdjustableNumber inputField" data-min="0" data-max="0.1" data-step="0.001" data-format="%.3f"> yr<sup>-1</sup></span> \(XY\)<span id="k4_container">\(-\)<span data-var="k4" class="TKAdjustableNumber inputField" data-min="0" data-max="0.01" data-step="0.0001" data-format="%.4f"> yr<sup>-1</sup></span> \(X^2\)</span><br>
 						Predators: \(\eqalign{\frac{\mathrm{d} Y}{\mathrm{d} t} =}-\)<span data-var="k2" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"> yr<sup>-1</sup></span>\(Y +\)<span data-var="alpha" class="TKAdjustableNumber inputField" data-min="0" data-max="1" data-step="0.01" data-format="%.2f"></span>\(\times\)<span data-var="k3" class="TKAdjustableNumber inputField" data-min="0" data-max="0.1" data-step="0.001" data-format="%.3f"> yr<sup>-1</sup></span>\(XY\)</p>
 						<p><span class="sans"><strong>Initial state</strong></span>
 						\( \qquad\) Prey: \(X^0=\)<span data-var="X0" class="TKAdjustableNumber inputField" data-min="0" data-max="200" data-format="%.0f"> animals</span>\(, \qquad\) Predators: \(Y^0=\)<span data-var="Y0" class="TKAdjustableNumber inputField" data-min="0" data-max="200" data-format="%.0f"> animals</span></p>
 						<p><span class="sans"><strong>Steady state</strong></span>
-						\( \qquad X_2^\infty =\)<span data-var="Xinf" data-format="%.1f"> animals</span> \(, \qquad Y_2^\infty =\)<span data-var="Yinf" data-format="%.1f"> animals</span>\(\qquad\) (<span data-var="stability"></span>)<br />
+						\( \qquad X_2^\infty =\)<span data-var="Xinf" data-format="%.1f"> animals</span> \(, \qquad Y_2^\infty =\)<span data-var="Yinf" data-format="%.1f"> animals</span>\(\qquad\) (<span data-var="stability"></span>)<br>
 					</p>
 				</div>
 			</div>

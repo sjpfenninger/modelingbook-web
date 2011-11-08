@@ -22,7 +22,7 @@ end
 
  %><!DOCTYPE html>
 <html lang='en'>
-  <head>
+<head>
     <meta charset='utf-8'>
     <title><%= displayTitle(pageTitle) %></title>
     <link rel='shortcut icon' href='favicon.ico'>
@@ -49,32 +49,38 @@ end
     <script src="libraries/jsxgraphcore.js "></script>
     <!-- MathJax -->
     <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  </head>
-  <body>
-  <div class='topbar'>
-    <div class='fill'>
-      <div class='container'>
-        <a class='brand' href='index.html'>
-          <img alt='Logo' src='images/logo.png'>
-        </a>
-        <ul class='nav'>
-          <%= displayNavItem('Home', 'index.html', current_path) %>
-          <li class='dropdown' data-dropdown='dropdown'>
-            <a class='dropdown-toggle' href="#">Example models</a>
-            <ul class='dropdown-menu'>
-              <%= displayNavItem('Lotka-Volterra', 'predprey.html', current_path) %>
-              <%= displayNavItem('Two-Box', '2box.html', current_path) %>
-            </ul>
-          </li>
-        </ul>
-        <ul class='nav secondary-nav'>
-          <%= displayNavItem('Help', 'help.html', current_path) %>
-        </ul>
-      </div>
+</head>
+<body>
+    <div class='topbar'>
+        <div class='fill'>
+            <div class='container'>
+                <a class='brand' href='index.html'>
+                    <img alt='Logo' src='images/logo.png'>
+                </a>
+                <ul class='nav'>
+                    <%= displayNavItem('Home', 'index.html', current_path) %>
+                    <li class='dropdown' data-dropdown='dropdown'>
+                        <a class='dropdown-toggle' href="#">Example models</a>
+                        <ul class='dropdown-menu'>
+                            <%= displayNavItem('Lotka-Volterra', 'predprey.html', current_path) %>
+                            <%= displayNavItem('Two-Box', 'twobox.html', current_path) %>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class='nav secondary-nav'>
+                    <li class='dropdown' data-dropdown='dropdown'>
+                        <a class='dropdown-toggle' href="#">Help</a>
+                        <!-- <%= displayNavItem('Help', 'help.html', current_path) %> -->
+                        <div class='dropdown-menu' id="dropdown-helpbox">
+                            <%= render_partial 'default_help' %>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-  </div>
     <div class='container'>
-      <%= yield %><%= refresh %>
+        <%= yield %><%= refresh %>
     </div>
-  </body>
+</body>
 </html>

@@ -58,22 +58,24 @@ var boxModel = {
     	// and generalize all tangle variables too
         tangle = new Tangle(element, {
             initialize: function () {
-                this.box1in = 0.5;
-                this.box1out = 0.1;
-    			this.box2in = 0.008;
+                this.box1in = 0;
+                this.box1out = 0;
+    			this.box2in = 0;
     			this.box2out = 0;
     			this.box1to2 = 1.0;
     			this.box2to1 = 0;
-    			this.box1start = 10;
-    			this.box2start = 20;
-    			this.box1size = boxModel.getBoxSize(1);
-    			this.box2size = boxModel.getBoxSize(2);
+                // this.box1size = boxModel.getBoxSize(1);
+                // this.box2size = boxModel.getBoxSize(2);
+                this.box1start = boxModel.getBoxSize(1) / 4;
+                this.box2start = boxModel.getBoxSize(2) / 4;
             },
             update: function () {
     			if (tangleInitialized) {
                     // nothing in here right now
     			}
                 // Set variables greyed or non-greyed
+    			this.a11 = this.box1to2 + this.box1out;
+    			this.a21 = this.box2to1 + this.box2out;
                 boxModel.updateUI();
             },
         });
@@ -122,7 +124,7 @@ var boxModel = {
     	});
     	
     	solution_board = JXG.JSXGraph.initBoard('solution_board', {boundingbox: [-1.5, 302.5, 77.5, -20.5], axis: true, grid: false});
-    	JXG.Options.axis.ticks.drawLabels = false; // disable labels before drawing phase board
+        // JXG.Options.axis.ticks.drawLabels = false; // disable labels before drawing phase board
     	phase_board = JXG.JSXGraph.initBoard('phase_board', {boundingbox: [-1.5, 302.5, 302.5, -20.5], axis: true, grid: false});
     	solution_board.addChild(phase_board);
 
@@ -199,7 +201,7 @@ var boxModel = {
             dataBox2[i] = data[i][1];
         }
 
-    	// Plot prey
+    	// Plot box1
         box1curve = solution_board.createElement('curve', [t, dataBox1], {strokeColor:box1color, strokeWidth:'2'});
         box1curve.updateDataArray = function() {
             var data = ode();
@@ -211,7 +213,7 @@ var boxModel = {
             }
         }
 
-        // Plot predators
+        // Plot box2
         box2curve = solution_board.createElement('curve', [t, dataBox2], {strokeColor:box2color, strokeWidth:'2'});
         box2curve.updateDataArray = function() {
             var data = ode();
@@ -224,7 +226,6 @@ var boxModel = {
         }
 
     	// Plot phase space with steady states
-
     	phasecurve = phase_board.createElement('curve', [dataBox2, dataBox1], {strokeColor:phasecolor, strokeWidth:'2'});
     	phasecurve.updateDataArray = function() {
     	    var data = ode();
@@ -268,8 +269,8 @@ var boxModel = {
     
     'updateBoxSize' : function() {
         jsPlumb.repaintEverything();
-        tangle.setValue("box1size", boxModel.getBoxSize(1));
-        tangle.setValue("box2size", boxModel.getBoxSize(2));
+        tangle.setValue("box1start", boxModel.getBoxSize(1)/4);
+        tangle.setValue("box2start", boxModel.getBoxSize(2)/4);
     },
     
     'getBoxSize' : function(box) {
