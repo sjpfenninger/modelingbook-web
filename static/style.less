@@ -30,20 +30,29 @@ body {
 	-moz-border-radius: 0 0 5px 5px;
 	border-radius: 0 0 5px 5px;
     background-color: #E6E6E6;
-    background-image: -moz-linear-gradient(center top, #E6E6E6, #BEBEBE);
+    // background-image: -moz-linear-gradient(center top, #E6E6E6, #BEBEBE);
     border-bottom: 1px solid #858585;
     border-left: 1px solid #858585;
     border-right: 1px solid #858585;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    background: -moz-linear-gradient(center top , #F8F8F8, #DADADA) repeat scroll 0 0 transparent;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 }
 
-.topbar div > ul .menu-dropdown li a, .nav .menu-dropdown li a, .topbar div > ul .dropdown-menu li a, .nav .dropdown-menu li a, .topbar a {
-    color: @bodytext;
+.topbar div > ul .menu-dropdown li a, .nav .menu-dropdown li a, .topbar div > ul .dropdown-menu li a, .nav .dropdown-menu li a, .topbar a, .dropdown {
+    color: @bodytext ! important;
     text-shadow: none;
 }
 
+.topbar a:hover, .topbar li.dropdown:hover {
+    // background: -moz-linear-gradient(center top , #EEEEEE, #F8F8F8) repeat scroll 0 0 transparent;
+    background-color: rgba(0, 0, 0, 0.05);
+    color: @bodytext ! important;
+}
+
 .topbar div > ul .active > a, .nav .active > a {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.05);
+    color: @bodytext ! important;
 }
 
 .topbar a.brand {
@@ -61,7 +70,7 @@ body {
 
 .topbar div > ul .menu-dropdown, .nav .menu-dropdown, .topbar div > ul .dropdown-menu, .nav .dropdown-menu {
     border-top: 1px solid #858585;
-    background-color: #BEBEBE;
+    background-color: #EEEEEE;
     // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
