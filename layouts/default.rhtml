@@ -12,10 +12,11 @@ def displayNavItem(navTitle, navURL, current_path)
 end
 
 def displayTitle(pageTitle)
+	siteTitle = 'Intro to Systems Modeling'
     if pageTitle != nil
-        title = 'Intro to Systems Modeling &raquo; ' + pageTitle 
+        title = siteTitle + ' &raquo; ' + pageTitle 
     else
-        title = 'Intro to Systems Modeling'
+        title = siteTitle
     end
     return title
 end
