@@ -12,7 +12,7 @@ def displayNavItem(navTitle, navURL, current_path)
 end
 
 def displayTitle(pageTitle)
-	siteTitle = 'Intro to Modeling'
+	siteTitle = 'Modeling natural systems'
     if pageTitle != nil
         title = siteTitle + ' &raquo; ' + pageTitle 
     else
@@ -65,8 +65,10 @@ end
                         <ul class='dropdown-menu'>
                             <%= displayNavItem('Lotka-Volterra', 'predprey.html', current_path) %>
                             <%= displayNavItem('Two-Box', 'twobox.html', current_path) %>
+							<%= displayNavItem('Substances in a lake', 'lake-substances.html', current_path) %>
                         </ul>
                     </li>
+					<%= displayNavItem('Other books', 'other-books.html', current_path) %>
                 </ul>
                 <ul class='nav secondary-nav'>
                     <li class='dropdown' data-dropdown='dropdown'>

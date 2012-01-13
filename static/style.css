@@ -36,3 +36,4 @@ body{padding-top:60px;}
 .boxoutput.var_positive{background-image:url("images/arrow-down.png"),url("images/bottom.png");}
 .boxoutput.var_negative{background-image:url("images/arrow-up.png"),url("images/bottom.png");}
 .boxoutput.var_inactive{background-image:url("images/arrow-down-t.png"),url("images/bottom-t.png");}
+#lakecontainer{background:transparent url("images/lake.png") no-repeat scroll 20px 20px;}
