@@ -36,6 +36,10 @@ body{padding-top:60px;}
 .boxoutput.var_positive{background-image:url("images/arrow-down.png"),url("images/bottom.png");}
 .boxoutput.var_negative{background-image:url("images/arrow-up.png"),url("images/bottom.png");}
 .boxoutput.var_inactive{background-image:url("images/arrow-down-t.png"),url("images/bottom-t.png");}
-#lakecontainer{padding:30px 20px 20px 40px;background:transparent url("images/lake.png") no-repeat scroll 22px 30px;}
+#lakecontainer{padding:30px 20px 20px 40px;background:transparent url("images/lake.png") no-repeat scroll 22px 30px;position:absolute;}
 #lakegraph{width:380px;height:320px;padding:36px 60px 0 0;float:left;}
 #laketext{padding:30px 0 0 36px;width:400px;float:left;}
+.lake_z0{position:absolute;top:65px;left:10px;}
+.lake_zg{position:absolute;top:350px;left:10px;}
+.lake_label{position:absolute;top:194px;left:60px;}
+.lake_point{position:absolute;top:45px;left:390px;}
