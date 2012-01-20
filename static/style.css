@@ -22,7 +22,8 @@ body{padding-top:60px;}
 .var_inactivedemo{color:#878787;border-bottom:1px dashed #878787;}
 .modelbox .var_inactive{color:#99A6D3;}.modelbox .var_inactive .TKAdjustableNumber{color:#99A6D3;border-bottom:1px dashed #99A6D3;}
 .TKAdjustableNumber{cursor:col-resize;}
-.otherbook{margin-bottom:40px;}
+.otherbook{clear:both;}
+.otherbook img,.otherbook div{margin-right:20px;max-width:600px;margin-bottom:40px;float:left;}
 .booklink{border-radius:2px !important;padding:3px !important;}
 a.booklink:hover{color:#0069D6 !important;}
 #toggle{float:right;}
