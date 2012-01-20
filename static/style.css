@@ -1,12 +1,14 @@
 html,body{background:#eeeeee url("images/noise.png") repeat scroll 0% 0%;color:#000000;}
 body{padding-top:60px;}
-.topbar .fill{margin-left:auto;margin-right:auto;width:980px;-webkit-border-radius:0 0 5px 5px;-moz-border-radius:0 0 5px 5px;border-radius:0 0 5px 5px;background-color:#E6E6E6;border-bottom:1px solid #858585;border-left:1px solid #858585;border-right:1px solid #858585;background:-moz-linear-gradient(center top, #f8f8f8, #dadada) repeat scroll 0 0 transparent;box-shadow:0 3px 5px rgba(0, 0, 0, 0.1);}
-.topbar div>ul .menu-dropdown li a,.nav .menu-dropdown li a,.topbar div>ul .dropdown-menu li a,.nav .dropdown-menu li a,.topbar a,.dropdown{color:#000000 ! important;text-shadow:none;}
-.topbar a:hover,.topbar li.dropdown:hover{background-color:rgba(0, 0, 0, 0.05);color:#000000 ! important;}
-.topbar div>ul .active>a,.nav .active>a{background-color:rgba(0, 0, 0, 0.05);color:#000000 ! important;}
-.topbar a.brand{padding:0 5px 0 5px;margin-left:-10px;}.topbar a.brand img{padding-top:2px;padding-right:10px;}
+.navbar-inner{margin-left:auto;margin-right:auto;width:980px;-webkit-border-radius:0 0 5px 5px;-moz-border-radius:0 0 5px 5px;border-radius:0 0 5px 5px;background-color:#E6E6E6;border-bottom:1px solid #858585;border-left:1px solid #858585;border-right:1px solid #858585;background:-moz-linear-gradient(center top, #f8f8f8, #dadada) repeat scroll 0 0 transparent;box-shadow:0 3px 5px rgba(0, 0, 0, 0.1);}
+.navbar div>ul .menu-dropdown li a,.nav .menu-dropdown li a,.navbar div>ul .dropdown-menu li a,.nav .dropdown-menu li a,.navbar a,.dropdown{color:#000000 ! important;text-shadow:none;}
+.navbar li:hover{background-color:rgba(0, 0, 0, 0.05);color:#000000 ! important;}
+.navbar .nav .active a{background-color:rgba(0, 0, 0, 0.05);color:#000000 ! important;}
+.navbar a.brand{padding:0 5px 0 5px;margin-left:-10px;}.navbar a.brand img{padding-top:2px;padding-right:10px;}
+.navbar .nav .dropdown-toggle .caret,.navbar .nav .open.dropdown .caret{border-top-color:#000000 !important;}
+.page-header{border-bottom:1px solid #EEEEEE;margin:18px 0;}
+.page-header h1{line-height:1;margin-bottom:17px;}
 .container>footer p{text-align:center;}
-.topbar div>ul .menu-dropdown,.nav .menu-dropdown,.topbar div>ul .dropdown-menu,.nav .dropdown-menu{border-top:1px solid #858585;background-color:#EEEEEE;}
 #dropdown-helpbox{min-width:500px;border:1px solid #858585;padding:10px;}#dropdown-helpbox p{color:#000000;font-size:0.8em;line-height:22px ! important;}
 #dropdown-helpbox p+p{margin-top:6px;}
 .sans{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;}

@@ -20,7 +20,7 @@ body {
     padding-top: 60px; /* 40px to make the container go all the way to the bottom of the topbar */
 }
 
-.topbar .fill {
+.navbar-inner {
     // background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
     // background: transparent url("images/topbar.png") repeat scroll 0 0;
     margin-left: auto;
@@ -39,23 +39,27 @@ body {
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 }
 
-.topbar div > ul .menu-dropdown li a, .nav .menu-dropdown li a, .topbar div > ul .dropdown-menu li a, .nav .dropdown-menu li a, .topbar a, .dropdown {
+.navbar div > ul .menu-dropdown li a, .nav .menu-dropdown li a, .navbar div > ul .dropdown-menu li a, .nav .dropdown-menu li a, .navbar a, .dropdown {
     color: @bodytext ! important;
     text-shadow: none;
 }
 
-.topbar a:hover, .topbar li.dropdown:hover {
+.navbar li:hover {
     // background: -moz-linear-gradient(center top , #EEEEEE, #F8F8F8) repeat scroll 0 0 transparent;
     background-color: rgba(0, 0, 0, 0.05);
     color: @bodytext ! important;
 }
 
-.topbar div > ul .active > a, .nav .active > a {
+.navbar .nav .active a {
     background-color: rgba(0, 0, 0, 0.05);
     color: @bodytext ! important;
 }
 
-.topbar a.brand {
+/*.navbar .nav .dropdown-menu .active a {
+    background-color: rgba(0, 0, 0, 0.10);
+}*/
+
+.navbar a.brand {
     padding: 0 5px 0 5px;
     margin-left: -10px;
     img {
@@ -64,39 +68,23 @@ body {
     }
 }
 
+.navbar .nav .dropdown-toggle .caret, .navbar .nav .open.dropdown .caret { /* fix caret color for dropdown menus */
+    border-top-color: @bodytext !important;
+}
+
+.page-header {
+    border-bottom: 1px solid #EEEEEE;
+    margin: 18px 0;
+}
+
+.page-header h1 {
+    line-height: 1;
+    margin-bottom: 17px;
+}
+
 .container > footer p {
     text-align: center; /* center align it with the container */
 }
-
-.topbar div > ul .menu-dropdown, .nav .menu-dropdown, .topbar div > ul .dropdown-menu, .nav .dropdown-menu {
-    border-top: 1px solid #858585;
-    background-color: #EEEEEE;
-    // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.container {
-    // width: 820px; /* downsize our container to make the content feel a bit tighter and more cohesive. NOTE: this removes two full columns from the grid, meaning you only go to 14 columns and not 16. */
-}
-
-/* The white background content wrapper */
-// .content {
-//   background-color: #fff;
-//   padding: 20px;
-//   margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
-//   -webkit-border-radius: 0 0 6px 6px;
-//      -moz-border-radius: 0 0 6px 6px;
-//           border-radius: 0 0 6px 6px;
-//   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-//      -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-//           box-shadow: 0 1px 2px rgba(0,0,0,.15);
-// }
-
-/* Page header tweaks */
-// .page-header {
-//   background-color: #f5f5f5;
-//   padding: 20px 20px 10px;
-//   margin: -20px -20px 20px;
-// }
 
 /* The whole rest */
 

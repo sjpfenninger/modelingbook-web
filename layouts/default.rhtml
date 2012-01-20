@@ -52,8 +52,8 @@ end
     <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
-    <div class='topbar'>
-        <div class='fill'>
+    <div class='navbar navbar-fixed'>
+        <div class='navbar-inner'>
             <div class='container'>
                 <a class='brand' href='index.html'>
                     <img alt='Logo' src='images/logo.png'>
@@ -61,7 +61,7 @@ end
                 <ul class='nav'>
                     <%= displayNavItem('Home', 'index.html', current_path) %>
                     <li class='dropdown' data-dropdown='dropdown'>
-                        <a class='dropdown-toggle' href="#">Example models</a>
+                        <a class='dropdown-toggle' href="#">Example models <b class="caret"></b></a>
                         <ul class='dropdown-menu'>
                             <%= displayNavItem('Lotka-Volterra', 'predprey.html', current_path) %>
                             <%= displayNavItem('Two-Box', 'twobox.html', current_path) %>
@@ -72,7 +72,7 @@ end
                 </ul>
                 <ul class='nav secondary-nav'>
                     <li class='dropdown' data-dropdown='dropdown'>
-                        <a class='dropdown-toggle' href="#">Help</a>
+                        <a class='dropdown-toggle' href="#">Help <b class="caret"></b></a>
                         <!-- <%= displayNavItem('Help', 'help.html', current_path) %> -->
                         <div class='dropdown-menu' id="dropdown-helpbox">
                             <%= render_partial 'default_help' %>
