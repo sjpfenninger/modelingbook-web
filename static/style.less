@@ -88,10 +88,15 @@ body {
 
 /* The whole rest */
 
+.navbar .secondary-nav {
+    float: right;
+}
+
 #dropdown-helpbox {
     min-width: 500px;
     border: 1px solid #858585;
     padding: 10px;
+    left: -430px;
     p {
         color: @bodytext;
         font-size: 0.8em;
@@ -101,6 +106,15 @@ body {
         margin-top: 6px;
     }
 }
+
+#dropdown-helpbox:after {
+    left: 445px !important;
+}
+
+#dropdown-helpbox:before {
+    left: 444px !important;
+}
+
 
 .sans {font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;}
 
