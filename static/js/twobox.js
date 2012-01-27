@@ -136,8 +136,12 @@ boxModel.setupBoards = function (tangle) {
     JXG.Options = JXG.deepCopy(JXG.Options, {
         showNavigation: false,
         showCopyright: false,
+        pan: false,
         axis: {
             lastArrow: false,
+        },
+        elements : {
+            highlight: false,
         }
     });
     
@@ -145,16 +149,6 @@ boxModel.setupBoards = function (tangle) {
     // JXG.Options.axis.ticks.drawLabels = false; // disable labels before drawing phase board
     phase_board = JXG.JSXGraph.initBoard('phase_board', {boundingbox: [-1.5, 302.5, 302.5, -20.5], axis: true, grid: false});
     solution_board.addChild(phase_board);
-
-    // Disable mouse wheel scrolling
-    JXG.removeEvent(solution_board.containerObj, 'mousewheel', solution_board.mouseWheelListener,
-    solution_board);
-    JXG.removeEvent(solution_board.containerObj, 'DOMMouseScroll',
-    solution_board.mouseWheelListener, solution_board);
-    JXG.removeEvent(phase_board.containerObj, 'mousewheel', phase_board.mouseWheelListener,
-    phase_board);
-    JXG.removeEvent(phase_board.containerObj, 'DOMMouseScroll',
-    phase_board.mouseWheelListener, phase_board);
 
     // Set colors
     var box1color = '#91BFDB';

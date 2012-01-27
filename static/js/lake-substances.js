@@ -38,15 +38,16 @@ lake.setupBoards = function (tangle) {
     JXG.Options = JXG.deepCopy(JXG.Options, {
         showNavigation: false,
         showCopyright: false,
+        pan: false,
         axis: {
             lastArrow: false,
+        },
+        elements : {
+            highlight: false,
         }
     });
-    solution_board = JXG.JSXGraph.initBoard('solution_board', {boundingbox: [0, 1, 1, 0], axis: false, grid: false});
 
-    // Disable mouse wheel scrolling
-    JXG.removeEvent(solution_board.containerObj, 'mousewheel', solution_board.mouseWheelListener, solution_board);
-    JXG.removeEvent(solution_board.containerObj, 'DOMMouseScroll', solution_board.mouseWheelListener, solution_board);
+    solution_board = JXG.JSXGraph.initBoard('solution_board', {boundingbox: [0, 1, 1, 0], axis: false, grid: false});
         
     // set up coordinates
     var z = Array.range(0.0, 1.0, 0.001);

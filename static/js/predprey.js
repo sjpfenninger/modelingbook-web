@@ -45,28 +45,22 @@ function setUpTangle() {
     });
 
 	// Set up the drawing boards
-	JXG.Options = JXG.deepCopy(JXG.Options, {
-	    showNavigation: false,
-		showCopyright: false,
-		axis: {
-			lastArrow: false,
-		}
-	}
-	);
+    JXG.Options = JXG.deepCopy(JXG.Options, {
+        showNavigation: false,
+        showCopyright: false,
+        pan: false,
+        axis: {
+            lastArrow: false,
+        },
+        elements : {
+            highlight: false,
+        }
+    });
+
 	predprey_board = JXG.JSXGraph.initBoard('predprey_board', {boundingbox: [-1.5, 302.5, 77.5, -20.5], axis: true, grid: false});
 	JXG.Options.axis.ticks.drawLabels = false;
 	phase_board = JXG.JSXGraph.initBoard('phase_board', {boundingbox: [-1.5, 302.5, 302.5, -20.5], axis: true, grid: false});
 	predprey_board.addChild(phase_board);
-		
-	// Disable mouse wheel scrolling
-	JXG.removeEvent(predprey_board.containerObj, 'mousewheel', predprey_board.mouseWheelListener,
-	predprey_board);
-	JXG.removeEvent(predprey_board.containerObj, 'DOMMouseScroll',
-	predprey_board.mouseWheelListener, predprey_board);
-	JXG.removeEvent(phase_board.containerObj, 'mousewheel', phase_board.mouseWheelListener,
-	phase_board);
-	JXG.removeEvent(phase_board.containerObj, 'DOMMouseScroll',
-	phase_board.mouseWheelListener, phase_board);
 	
 	// Set colors
 	var preycolor = '#91BFDB'
@@ -74,8 +68,8 @@ function setUpTangle() {
 	var phasecolor = '#31A354'
 
     // Dynamic initial value as gliders on the y-axis
-    startprey = predprey_board.createElement('glider', [0, 50, predprey_board.defaultAxes.y], {name:'X: Prey',strokeColor:preycolor,fillColor:preycolor});
-	startpred = predprey_board.createElement('glider', [0, 30, predprey_board.defaultAxes.y], {name:'Y: Predators',strokeColor:predcolor,fillColor:predcolor});
+    startprey = predprey_board.createElement('glider', [0, 50, predprey_board.defaultAxes.y], {name:'X: Prey',strokeColor:preycolor,fillColor:preycolor,highlight:true});
+	startpred = predprey_board.createElement('glider', [0, 30, predprey_board.defaultAxes.y], {name:'Y: Predators',strokeColor:predcolor,fillColor:predcolor,highlight:true});
 	predprey_board.addHook(function() {
 		tangle.setValue("X0", startprey.Y());
 		tangle.setValue("Y0", startpred.Y());
