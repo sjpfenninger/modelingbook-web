@@ -1,4 +1,5 @@
-<%= 
+<%=
+
 def displayNavItem(navTitle, navURL, current_path)
     if current_path == '/'
         current_path = '/index'
@@ -19,6 +20,17 @@ def displayTitle(pageTitle)
         title = siteTitle
     end
     return title
+end
+
+def displayHelp(current_path)
+	# Returns the name of the help partial if one is to be displayed for this path, otherwise false
+	helpPartialName = 'help_' + current_path[1..-1] # strip first character ('/') from current_path
+	helpPartialPath = Frank.dynamic_folder + '/_' + helpPartialName + '.rhtml'
+	if File.exists?(helpPartialPath)
+		return helpPartialName
+	else
+		return false
+	end
 end
 
  %><!DOCTYPE html>
@@ -53,15 +65,18 @@ end
                     </li>
 					<%= displayNavItem('Other books', 'other-books.html', current_path) %>
                 </ul>
+				<% if displayHelp(current_path) %>
                 <ul class='nav secondary-nav'>
                     <li class='dropdown' data-dropdown='dropdown'>
                         <a class='dropdown-toggle' href="#">Help <b class="caret"></b></a>
-                        <!-- <%= displayNavItem('Help', 'help.html', current_path) %> -->
                         <div class='dropdown-menu' id="dropdown-helpbox">
-                            <%= render_partial 'default_help' %>
+                            <%= if displayHelp(current_path)
+									render_partial(displayHelp(current_path)) 
+								end %>
                         </div>
                     </li>
                 </ul>
+				<% end %>
             </div>
         </div>
     </div>
