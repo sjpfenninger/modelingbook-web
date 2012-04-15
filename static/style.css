@@ -824,7 +824,7 @@ html,body{background:#eeeeee url("images/noise.png") repeat scroll 0% 0%;color:#
 .navbar .navbar-inner{margin-left:auto;margin-right:auto;width:980px;-webkit-border-radius:0 0 5px 5px;-moz-border-radius:0 0 5px 5px;border-radius:0 0 5px 5px;box-shadow:0 1px 3px rgba(0, 0, 0, 0.25),0 -1px 0 rgba(0, 0, 0, 0.1) inset;-moz-box-shadow:0 1px 3px rgba(0, 0, 0, 0.25),0 -1px 0 rgba(0, 0, 0, 0.1) inset;-webkit-box-shadow:0 1px 3px rgba(0, 0, 0, 0.25),0 -1px 0 rgba(0, 0, 0, 0.1) inset;}
 .navbar a.brand{padding:0 5px 0 5px;margin-left:10px;}.navbar a.brand img{padding-top:2px;padding-right:10px;}
 .page-header{border-bottom:1px solid #EEEEEE;margin:18px 0;}
-.page-header h1{line-height:1;margin-bottom:17px;}
+.page-header h1{}
 .container>footer p{border-top:1px solid #EEEEEE;margin:0;margin-top:20px;padding:20px 0;text-align:center;}
 .navbar .secondary-nav{float:right;}
 #dropdown-helpbox{min-width:500px;border:1px solid #858585;padding:10px;left:-430px;}#dropdown-helpbox p{color:#000000;font-size:0.8em;line-height:22px ! important;}
