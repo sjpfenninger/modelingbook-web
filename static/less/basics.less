@@ -1,0 +1,92 @@
+#dropdown-helpbox {
+    min-width: 500px;
+    border: 1px solid #858585;
+    padding: 10px;
+    left: -430px;
+    p {
+        color: @bodytext;
+        font-size: 0.8em;
+        line-height: 22px ! important;
+    }
+    p + p {
+        margin-top: 6px;
+    }
+}
+
+#dropdown-helpbox:after {
+    left: 445px !important;
+}
+
+#dropdown-helpbox:before {
+    left: 444px !important;
+}
+
+
+.sans {font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;}
+
+.examplespace {
+	font-family: Georgia, Times, serif;
+	background: url("images/t-80.png") repeat scroll 0% 0% transparent;
+	padding: 20px;
+	margin-bottom: 20px;
+	border: 1px solid #E5E5E5;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font-size: 14px;
+}
+
+.workspace {
+    border: 1px solid #BED5E5;
+    background: url("images/subtle_freckles.png") repeat scroll 0% 0% transparent;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
+    position: relative;
+}
+
+.equationspace {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+#title1 {
+	color: @title1;
+	font-weight: normal;
+}
+
+#title2 {
+	color: @title2;
+}
+
+.imgbox {
+	border: 1px solid #E5E5E5;
+ 	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding: 5px;
+	background-color: #ffffff;   
+}
+
+.var_inactive {
+	color: #D5D5D5;
+	.TKAdjustableNumber {
+		color: #D5D5D5;
+		border-bottom: 1px dashed #D5D5D5;
+	}
+}
+
+.var_inactivedemo {
+    color: #878787;
+    border-bottom: 1px dashed #878787;
+}
+
+.modelbox .var_inactive {
+    color: #99A6D3;
+    .TKAdjustableNumber {
+    	color: #99A6D3;
+    	border-bottom: 1px dashed #99A6D3;
+    }
+}
+
+.TKAdjustableNumber {
+    cursor: col-resize;
+}
