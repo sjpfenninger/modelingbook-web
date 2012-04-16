@@ -1,8 +1,10 @@
-/* Import css files from used libraries */
-@import "libraries/bootstrap.less";
-/*@import "libraries/jquery-ui.less";*/
-@import "libraries/jsxgraph.less";
+/* Import css files from used libraries, will be included by require.js' Optimize*/
+@import "libraries/jquery-ui.css";
 @import "libraries/TangleKit/TangleKit.css";
+
+/* Import css files renamed to less from used libraries, will be included by LESS compilation */
+@import "libraries/bootstrap.less";
+@import "libraries/jsxgraph.less";
 
 /* Define colors */
 @bodytext: #000000;

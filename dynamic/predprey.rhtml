@@ -2,13 +2,13 @@ pageTitle: 'Lotka-Volterra Model'
 linkTitle: 'Lotka-Volterra'
 ---------------------------------------------META
 <script>
-$(document).ready(function(){
-	setUpTangle();
-	setUpToggle();
-	$('#topbar').dropdown();
+require(["libraries/jquery-1.7.2.js", "js/predprey.js"], function () {
+    $(document).ready(function(){
+		setUpTangle();
+		setUpToggle();
+    });
 });
 </script>
-<script src="js/predprey.js"></script>	
 
 <div class="content">
     <div class="page-header">

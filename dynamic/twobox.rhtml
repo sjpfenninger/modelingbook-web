@@ -2,13 +2,12 @@ pageTitle: 'Two-box Model'
 linkTitle: 'Two-Box'
 ---------------------------------------------META
 <script>
-$(document).ready(function(){
-	boxModel.init();
-	$('#topbar').dropdown();
+require(["libraries/jquery-1.7.2.js", "order!js/shared.js", "order!js/twobox.js"], function () {
+    $(document).ready(function(){
+		boxModel.init();
+    });
 });
 </script>
-<script src="js/shared.js"></script>
-<script src="js/twobox.js"></script>
    
 <div class="content">
     <div class="page-header">
