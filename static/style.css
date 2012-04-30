@@ -2,8 +2,9 @@
 @import "libraries/jquery-ui.css";
 @import "libraries/TangleKit/TangleKit.css";
 @import "libraries/jsxgraph.css";
-html,body{background:#eeeeee url("images/noise.png") repeat scroll 0% 0%;color:#000000;}
+html,body{background:#eeeeee url("images/noise.png") repeat scroll 0% 0%;}
 .navbar{border-bottom:none;}
+.navbar .nav li.dropdown .dropdown-toggle .caret,.navbar .nav li.dropdown.open .caret{border-top-color:#333333;}
 .navbar .navbar-inner{margin-left:auto;margin-right:auto;width:980px;-webkit-border-radius:0 0 5px 5px;-moz-border-radius:0 0 5px 5px;border-radius:0 0 5px 5px;box-shadow:0 1px 3px rgba(0, 0, 0, 0.25),0 -1px 0 rgba(0, 0, 0, 0.1) inset;-moz-box-shadow:0 1px 3px rgba(0, 0, 0, 0.25),0 -1px 0 rgba(0, 0, 0, 0.1) inset;-webkit-box-shadow:0 1px 3px rgba(0, 0, 0, 0.25),0 -1px 0 rgba(0, 0, 0, 0.1) inset;}
 .navbar a.brand{padding:0 5px 0 5px;margin-left:10px;}.navbar a.brand img{padding-top:2px;padding-right:10px;}
 .page-header{border-bottom:1px solid #EEEEEE;margin:18px 0;}
@@ -20,13 +21,15 @@ html,body{background:#eeeeee url("images/noise.png") repeat scroll 0% 0%;color:#
 #title1{color:#3b7bf2;font-weight:normal;}
 #title2{color:#072a6b;}
 .imgbox{border:1px solid #E5E5E5;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;padding:5px;background-color:#ffffff;}
+.imgbox-left{float:left;margin:0 10px 10px 0;}
 .var_inactive{color:#D5D5D5;}.var_inactive .TKAdjustableNumber{color:#D5D5D5;border-bottom:1px dashed #D5D5D5;}
 .var_inactivedemo{color:#878787;border-bottom:1px dashed #878787;}
 .modelbox .var_inactive{color:#99A6D3;}.modelbox .var_inactive .TKAdjustableNumber{color:#99A6D3;border-bottom:1px dashed #99A6D3;}
 .TKAdjustableNumber{cursor:col-resize;}
+.sidebar-small{font-size:0.9em;}
 .otherbook{clear:both;}
 .otherbook img,.otherbook div{margin-right:20px;max-width:600px;margin-bottom:40px;float:left;}
-.booklink{border-radius:2px !important;padding:3px !important;}
+.booklink{padding-top:3px !important;padding-bottom:3px !important;}
 a.booklink:hover{color:#0069D6 !important;}
 #toggle{float:right;}
 .toggle-1-on:hover,.toggle-2-off:hover{text-decoration:none;background-color:#ddd;}
