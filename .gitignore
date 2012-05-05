@@ -1,4 +1,5 @@
 exported
 static/style.css
 static/less/*.css
+Makefile
 Rakefile
