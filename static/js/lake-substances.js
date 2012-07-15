@@ -92,7 +92,7 @@ lake.setupBoards = function (tangle) {
     var colors = ['#994538', '#AB8734', '#AB8734', '#485E3D', '#485E3D', '#44627D'];
 
     for (var curve in curves) {
-        lakecurves[curve] = solution_board.createElement('curve', [curves[curve], z], {strokeColor:colors[curve], strokeWidth:'2'});
+        lakecurves[curve] = solution_board.create('curve', [curves[curve], z], {strokeColor:colors[curve], strokeWidth:'2'});
         lakecurves[curve].curveid = curve;
         lakecurves[curve].updateDataArray = function() {
             var thecurves = drawcurves();

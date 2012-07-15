@@ -30,21 +30,3 @@ Array.range= function(a, b, step){
     }
     return A;
 }
-
-require([
-    "order!libraries/jquery-1.7.2.js",
-    "order!libraries/jquery-ui-1.8.18.custom.min.js",
-    "order!libraries/jquery.jsPlumb-1.3.10-all.js",
-    "order!libraries/bootstrap-dropdown.js",
-    "order!libraries/Tangle.js",
-    "order!libraries/TangleKit/mootools.js",
-    "order!libraries/TangleKit/sprintf.js",
-    "order!libraries/TangleKit/BVTouchable.js",
-    "order!libraries/TangleKit/TangleKit.js",
-    "order!libraries/jsxgraphcore.js",
-    "order!http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
-], function () {
-    // $(document).ready(function(){
-        // $('#topbar').dropdown();
-    // });
-});
