@@ -15,7 +15,7 @@ end
 def displayTitle(pageTitle)
 	siteTitle = 'Systems Analysis Book'
     if pageTitle != nil
-        title = siteTitle + ' &raquo; ' + pageTitle 
+        title = siteTitle + ' &raquo; ' + pageTitle
     else
         title = siteTitle
     end
@@ -57,10 +57,10 @@ end
                     <li class='dropdown'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href="#">Example Models <b class="caret"></b></a>
                         <ul class='dropdown-menu'>
-                            <%= displayNavItem('Lotka-Volterra', 'predprey.html', current_path) %>
-                            <%= displayNavItem('Two-Box', 'twobox.html', current_path) %>
+                            <%= displayNavItem('Lotka-Volterra Model', 'predprey.html', current_path) %>
+                            <%= displayNavItem('Two-Box Model', 'twobox.html', current_path) %>
 							<%= displayNavItem('Substances in a Lake', 'lake-substances.html', current_path) %>
-							<%= displayNavItem('One-Box', 'onebox.html', current_path) %>
+							<!-- <%= displayNavItem('One-Box', 'onebox.html', current_path) %> -->
                         </ul>
                     </li>
 					<%= displayNavItem('Solutions', 'solutions.html', current_path) %>
@@ -72,7 +72,7 @@ end
                         <a class='dropdown-toggle' data-toggle='dropdown' href="#">Help <b class="caret"></b></a>
                         <div class='dropdown-menu' id="dropdown-helpbox">
                             <%= if displayHelp(current_path)
-									render_partial(displayHelp(current_path)) 
+									render_partial(displayHelp(current_path))
 								end %>
                         </div>
                     </li>

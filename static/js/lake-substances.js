@@ -48,12 +48,12 @@ lake.setupBoards = function (tangle) {
     });
 
     solution_board = JXG.JSXGraph.initBoard('solution_board', {boundingbox: [0, 1, 1, 0], axis: false, grid: false});
-        
+
     // set up coordinates
     var z = Array.range(0.0, 1.0, 0.001);
     var z_o = Array.range(0.0, 0.5, 0.001); // upper half
     var z_u = Array.range(0.5, 1.0, 0.001); // lower half
-        
+
     function drawcurves() {
         var alpha = tangle.getValue("alpha");
         var ca = [];
@@ -62,7 +62,7 @@ lake.setupBoards = function (tangle) {
         var cc_o = [];
         var cc_u = [];
         var cd = [];
-    
+
         // iterate through the z coordinates for each variable
         for (var i in z) {
             var istar = z.length - i;
@@ -81,16 +81,16 @@ lake.setupBoards = function (tangle) {
             cb_u[i] = Math.cosh(alpha*(z_u[istar]-1))/(Math.cosh(alpha/2)+(alpha/2)*Math.sinh(alpha/2));
             cc_u[i] = 1/Math.cosh(alpha/2);
         }
-    
+
         // var curves = {'ca': ca, 'cb_o' : cb_o, 'cb_u' : cb_u, 'cc_o' : cc_o, 'cc_u' : cc_u, 'cd' : cd};
         var curves = [ca, cb_o, cb_u, cc_o, cc_u, cd];
         return curves;
     }
-    
+
     var curves = drawcurves();
     lakecurves = [];
-    var colors = ['#FDBE85', '#FD8D3C', '#FD8D3C', '#E6550D', '#E6550D', '#A63603'];
-            
+    var colors = ['#994538', '#AB8734', '#AB8734', '#485E3D', '#485E3D', '#44627D'];
+
     for (var curve in curves) {
         lakecurves[curve] = solution_board.createElement('curve', [curves[curve], z], {strokeColor:colors[curve], strokeWidth:'2'});
         lakecurves[curve].curveid = curve;

@@ -8,7 +8,7 @@ require(["libraries/jquery-1.7.2.js", "js/lake-substances.js"], function () {
     });
 });
 </script>
-   
+
 <div class="content">
     <div class="page-header">
         <h1>Substances in a lake</h1>
@@ -17,24 +17,25 @@ require(["libraries/jquery-1.7.2.js", "js/lake-substances.js"], function () {
         <div class="span16">
             <div class="examplespace" id="lakecontainer">
                 <div id="lakegraph">
-					<div class="jsxbox" id="solution_board" style="height:300px;"></div>
+					<div class="jsxbox" id="solution_board" style="height:300px; width:382px;"></div>
 				</div>
 				<div id="laketext">
-					<p>Four chemical substances are inadvertantly introduced to a lake at the same point:</p>
+					<p>An industrial accident inadvertently releases four chemical substances into a lake:</p>
 					<ul>
-						<li>Substance A</li>
-						<li>Substance B</li>
-						<li>Substance C</li>
-						<li>Substance D</li>						
+						<li><span style="color: #994538;">The red substance</span> is degraded in both the aerobic and the anaerobic layers.</li>
+						<li><span style="color: #AB8734;">The orange substance</span> is degraded in the anaerobic layer by a first-order reaction, but it is inert in the aerobic layer.</li>
+						<li><span style="color: #485E3D;">The green substance</span> is degraded in the aerobic layer, but not in the anaerobic one.</li>
+						<li><span style="color: #44627D;">The blue substance</span> is completely inert.</li>
 					</ul>
-					<p>[More explanation here]</p>
+					<p>The graph shows the concentration of all four substances over the entire depth of the lake, which ranges from \( z=0 \) to \( z=z_g \) (depth of the ground).</p>
 					<p>&alpha; = <span data-var="alpha" class="TKAdjustableNumber inputField" data-min="0" data-max="15" data-step="0.1" data-format="%.1f"></span></p>
 				</div>
 				<div style="clear:both;"></div>
 			<div class="lake_z0">z=0</div>
 			<div class="lake_zg">z=z<sub>g</sub></div>
 			<div class="lake_label">Aerobic zone<br>Anaerobic zone</div>
-			<div class="lake_point">Insert point</div>
+			<div class="x_label">Concentration</div>
+            <div class="y_label">Depth</div>
             </div>
         </div>
     </div>

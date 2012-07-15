@@ -26,7 +26,7 @@ Array.range= function(a, b, step){
             s= s.toUpperCase();
         }
         s= s.substring(s.indexOf(a), s.indexOf(b)+ 1);
-        A= s.split('');        
+        A= s.split('');
     }
     return A;
 }
@@ -34,15 +34,15 @@ Array.range= function(a, b, step){
 require([
     "order!libraries/jquery-1.7.2.js",
     "order!libraries/jquery-ui-1.8.18.custom.min.js",
+    "order!libraries/jquery.jsPlumb-1.3.10-all.js",
     "order!libraries/bootstrap-dropdown.js",
     "order!libraries/Tangle.js",
     "order!libraries/TangleKit/mootools.js",
     "order!libraries/TangleKit/sprintf.js",
     "order!libraries/TangleKit/BVTouchable.js",
     "order!libraries/TangleKit/TangleKit.js",
-    "libraries/jquery.jsPlumb-1.3.8-all.js",
-    "libraries/jsxgraphcore.js",
-    "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+    "order!libraries/jsxgraphcore.js",
+    "order!http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
 ], function () {
     // $(document).ready(function(){
         // $('#topbar').dropdown();
